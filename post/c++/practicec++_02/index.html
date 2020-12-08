@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://biejinxin.github.io/css/frameworks.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://biejinxin.github.io/css/github.css" />
+    
+    <link crossorigin="anonymous" media="(prefers-color-scheme: dark)" rel="stylesheet"
+        href="https://biejinxin.github.io/css/dark.css" />
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="description"
+        content="C&#43;&#43;核心编程  本阶段主要针对C&#43;&#43;面向对象编程技术做详细讲解，探讨C&#43;&#43;中的核心和精髓
+1 内存分区模型  C&#43;&#43;程序在执行时，将内存大方向划分为4个区域
+ 代码区：存放函数体的二进制代码，由操作系统进行管理 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放，存放函数的参数值，局部变量等 堆区：由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收  内存四区的意义：
+不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编辑
+1.1 程序运行前 在程序编译后，生成了exe可执行程序，未执行该程序分为两个区域
+代码区：
+​	存放CPU执行的机器指令
+​	代码区是共享的，共享的目的是对于频繁被执行的程序，在需要在内存中有一份代码即可
+​	代码区是只读的，使其只读的原因是防止程序意外的修改了它的指令
+全局区：
+​	全局变量和静态变量存放在此
+​	全局区还包含了常量区，字符串常量和其他常量也存放于此
+​	该区域的数据在程序结束后由操作系统释放
+总结：
+ C&#43;&#43;中在程序运行前分为全局区和代码区 代码区特点是共享和只读 全局区中存放的全局变量、静态变量（static 修饰）、常量 常量区中存放const 修饰的全局常量和字符串  1.2 程序运行后  栈区：  ​	由编译器自动分配释放，存放函数的参数值，局部变量
+​	注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放
+  示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; //返回地址的函数 * int * func() { int a = 10;	//局部变量存放在栈区，栈区的数据在函数执行后自动释放	 return &amp;amp;a;	//返回变量的地址  } int main() { //栈区数据的注意事项 ----不要返回局部变量的地址  //栈区的数据由编译器管理开辟和释放  //创建指针变量接受 func() 函数的返回值  int * p = func(); cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第一次可以打印正确数字，是因为编译器做了保留  cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第二次这个数据就不在保留  system(&amp;#34;pause&amp;#34;); return 0; }   堆区：" />
+    <meta name="keywords"
+        content="" />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;_02/" />
+
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PracticeC&#43;&#43;_02 - My New Hugo Site" />
+    <meta name="twitter:description"
+        content="C&#43;&#43;核心编程  本阶段主要针对C&#43;&#43;面向对象编程技术做详细讲解，探讨C&#43;&#43;中的核心和精髓
+1 内存分区模型  C&#43;&#43;程序在执行时，将内存大方向划分为4个区域
+ 代码区：存放函数体的二进制代码，由操作系统进行管理 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放，存放函数的参数值，局部变量等 堆区：由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收  内存四区的意义：
+不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编辑
+1.1 程序运行前 在程序编译后，生成了exe可执行程序，未执行该程序分为两个区域
+代码区：
+​	存放CPU执行的机器指令
+​	代码区是共享的，共享的目的是对于频繁被执行的程序，在需要在内存中有一份代码即可
+​	代码区是只读的，使其只读的原因是防止程序意外的修改了它的指令
+全局区：
+​	全局变量和静态变量存放在此
+​	全局区还包含了常量区，字符串常量和其他常量也存放于此
+​	该区域的数据在程序结束后由操作系统释放
+总结：
+ C&#43;&#43;中在程序运行前分为全局区和代码区 代码区特点是共享和只读 全局区中存放的全局变量、静态变量（static 修饰）、常量 常量区中存放const 修饰的全局常量和字符串  1.2 程序运行后  栈区：  ​	由编译器自动分配释放，存放函数的参数值，局部变量
+​	注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放
+  示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; //返回地址的函数 * int * func() { int a = 10;	//局部变量存放在栈区，栈区的数据在函数执行后自动释放	 return &amp;amp;a;	//返回变量的地址  } int main() { //栈区数据的注意事项 ----不要返回局部变量的地址  //栈区的数据由编译器管理开辟和释放  //创建指针变量接受 func() 函数的返回值  int * p = func(); cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第一次可以打印正确数字，是因为编译器做了保留  cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第二次这个数据就不在保留  system(&amp;#34;pause&amp;#34;); return 0; }   堆区：" />
+    <meta name="twitter:site" content="https://biejinxin.github.io/" />
+    <meta name="twitter:creator" content="" />
+    <meta name="twitter:image"
+        content="https://biejinxin.github.io/">
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PracticeC&#43;&#43;_02 - My New Hugo Site">
+    <meta property="og:description"
+        content="C&#43;&#43;核心编程  本阶段主要针对C&#43;&#43;面向对象编程技术做详细讲解，探讨C&#43;&#43;中的核心和精髓
+1 内存分区模型  C&#43;&#43;程序在执行时，将内存大方向划分为4个区域
+ 代码区：存放函数体的二进制代码，由操作系统进行管理 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放，存放函数的参数值，局部变量等 堆区：由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收  内存四区的意义：
+不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编辑
+1.1 程序运行前 在程序编译后，生成了exe可执行程序，未执行该程序分为两个区域
+代码区：
+​	存放CPU执行的机器指令
+​	代码区是共享的，共享的目的是对于频繁被执行的程序，在需要在内存中有一份代码即可
+​	代码区是只读的，使其只读的原因是防止程序意外的修改了它的指令
+全局区：
+​	全局变量和静态变量存放在此
+​	全局区还包含了常量区，字符串常量和其他常量也存放于此
+​	该区域的数据在程序结束后由操作系统释放
+总结：
+ C&#43;&#43;中在程序运行前分为全局区和代码区 代码区特点是共享和只读 全局区中存放的全局变量、静态变量（static 修饰）、常量 常量区中存放const 修饰的全局常量和字符串  1.2 程序运行后  栈区：  ​	由编译器自动分配释放，存放函数的参数值，局部变量
+​	注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放
+  示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; //返回地址的函数 * int * func() { int a = 10;	//局部变量存放在栈区，栈区的数据在函数执行后自动释放	 return &amp;amp;a;	//返回变量的地址  } int main() { //栈区数据的注意事项 ----不要返回局部变量的地址  //栈区的数据由编译器管理开辟和释放  //创建指针变量接受 func() 函数的返回值  int * p = func(); cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第一次可以打印正确数字，是因为编译器做了保留  cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第二次这个数据就不在保留  system(&amp;#34;pause&amp;#34;); return 0; }   堆区：" />
+    <meta property="og:url" content="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;_02/" />
+    <meta property="og:site_name" content="PracticeC&#43;&#43;_02" />
+    <meta property="og:image"
+        content="https://biejinxin.github.io/">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="1024">
+    
+    <meta property="article:published_time" content="2020-12-07 08:31:20 &#43;0000 UTC" />
+    
+
+    
+    
+
+    
+    
+
+    <title>PracticeC&#43;&#43;_02 - My New Hugo Site</title>
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://biejinxin.github.io/images/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+    
+    
+</head>
+
+<body class="env-production emoji-size-boost page-responsive page-profile">
+  <div class="position-relative js-header-wrapper ">
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+    <header class="Header py-lg-0 js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+        <div class="Header-item d-none d-lg-flex">
+            <a class="Header-link" href="https://biejinxin.github.io/" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div
+            class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+            <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox"
+                aria-expanded="false">
+                <div class="position-relative">
+                </div>
+            </div>
+        </div>
+        <nav class="d-flex" aria-label="Global">
+            <a class="js-selected-navigation-item Header-link py-lg-3">&nbsp;</a>
+        </nav>
+        <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative" style="margin-right: auto;">
+            <a class="Header-link" href="https://biejinxin.github.io/" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+            <details class="details-overlay details-reset">
+                <summary class="Header-link" aria-label="View profile and more"
+                    data-ga-click="Header, show menu, icon:avatar">
+                    
+                    <img alt="" class="avatar" src="https://biejinxin.github.io/images/avatar.png" height="20" width="20">
+                    
+                </summary>
+            </details>
+        </div>
+    </header>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+<div id="js-flash-container">
+</div>
+
+  
+<div class="application-main " data-commit-hovercards-enabled="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+        <main>
+            <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+                <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+                    <div class="mb-3 d-flex">
+                        <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+                            <a class="avatar mr-1" href="https://biejinxin.github.io/about/">
+                                
+                                    <img src="https://biejinxin.github.io/images/avatar.png" width="26" height="26">
+                                
+                            </a>
+                            <span class="author"><a href="https://biejinxin.github.io/"></a></span>
+                            <span class="path-divider">/</span>
+                            <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
+                                    href="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;_02/">PracticeC&#43;&#43;_02</a></strong>
+
+                            <div class="d-block text-small text-gray">
+                                Created <time-ago datetime="Mon, 07 Dec 2020 08:31:20 &#43;0000" class="no-wrap">
+                                    Mon, 02 Jan 2006 15:04:05 -0700</time-ago>
+                                <span class="file-info-divider"></span>
+                                Modified <time-ago datetime="Mon, 07 Dec 2020 08:31:20 &#43;0000" class="no-wrap">
+                                        Mon, 02 Jan 2006 15:04:05 -0700</time-ago>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+                <div class="repository-content ">
+                    <div class="Box mt-3 position-relative">
+                        <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+                            <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                                5113 Words
+                                
+                            </div>
+                        </div>
+
+                        <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><h2 id="c核心编程">C++核心编程</h2>
+<hr>
+<p>本阶段主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓</p>
+<h3 id="1-内存分区模型">1 内存分区模型</h3>
+<hr>
+<p>C++程序在执行时，将内存大方向划分为4个区域</p>
+<ul>
+<li>代码区：存放函数体的二进制代码，由操作系统进行管理</li>
+<li>全局区：存放全局变量和静态变量以及常量</li>
+<li>栈区：由编译器自动分配释放，存放函数的参数值，局部变量等</li>
+<li>堆区：由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收</li>
+</ul>
+<p><strong>内存四区的意义</strong>：</p>
+<p>不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编辑</p>
+<h4 id="11-程序运行前">1.1 程序运行前</h4>
+<p>在程序编译后，生成了<code>exe</code>可执行程序，未执行该程序分为两个区域</p>
+<p><strong>代码区</strong>：</p>
+<p>​		存放CPU执行的机器指令</p>
+<p>​		代码区是<strong>共享的</strong>，共享的目的是对于频繁被执行的程序，在需要在内存中有一份代码即可</p>
+<p>​		代码区是<strong>只读的</strong>，使其只读的原因是防止程序意外的修改了它的指令</p>
+<p><strong>全局区</strong>：</p>
+<p>​		全局变量和静态变量存放在此</p>
+<p>​		全局区还包含了常量区，字符串常量和其他常量也存放于此</p>
+<p>​		该区域的数据在程序结束后由操作系统释放</p>
+<p><strong>总结</strong>：</p>
+<ul>
+<li>C++中在程序运行前分为全局区和代码区</li>
+<li>代码区特点是共享和只读</li>
+<li>全局区中存放的全局变量、静态变量（static 修饰）、常量</li>
+<li>常量区中存放<code>const </code>修饰的全局常量和字符串</li>
+</ul>
+<h4 id="12-程序运行后">1.2 程序运行后</h4>
+<ul>
+<li><strong>栈区</strong>：</li>
+</ul>
+<p>​				由编译器自动分配释放，存放函数的参数值，局部变量</p>
+<p>​				注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放</p>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//返回地址的函数 * 
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">func</span>()
+{
+  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">//局部变量存放在栈区，栈区的数据在函数执行后自动释放	
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>a;		<span style="color:#75715e">//返回变量的地址
+</span><span style="color:#75715e"></span>  	
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//栈区数据的注意事项    ----不要返回局部变量的地址
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//栈区的数据由编译器管理开辟和释放
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">//创建指针变量接受 func() 函数的返回值
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> func();
+  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;		<span style="color:#75715e">//第一次可以打印正确数字，是因为编译器做了保留
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;		<span style="color:#75715e">//第二次这个数据就不在保留
+</span><span style="color:#75715e"></span>  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+<li>
+<p><strong>堆区</strong>：</p>
+<p>由程序员分配释放，若程序员不释放，程序结束时由操作系统回收</p>
+<p>在C++中主要利用new在堆区开辟内存</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">func</span>()
+{
+  
+  <span style="color:#75715e">//利用new 关键字，可以将数据开辟到堆区
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//这里的指针本质也是局部变量，放在栈区
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//指针保存的数据在堆区
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">10</span>);		<span style="color:#75715e">//在堆区开辟内存 new
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> a;
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//堆区：由程序员分配释放，若程序员不释放，程序结束时由操作系统回收
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">//在C++中主要利用new在堆区开辟内存
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> func();		<span style="color:#75715e">//指针接受内存
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;		
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;		
+  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：堆区数据由程序员管理开辟和释放，堆区数据利用<code>new</code>关键字进行开辟内存。</p>
+<h4 id="13-new-操作符">1.3 new 操作符</h4>
+<p>C++中利用new操作符在堆区开辟数据</p>
+<p>堆区开辟的数据，由程序员手动开辟，手动释放，释放操作符 delete</p>
+<p>语法：<code>new 数据类型</code></p>
+<p>利用new创建的数据，会返回该数据对应的类型的指针</p>
+<ul>
+<li>
+<p><strong>示例</strong>：基本语法</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//1.new 的基本语法
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">func</span>()
+{
+  <span style="color:#75715e">//在堆区创建整型的数据
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//new 返回的是 该数据类型的指针
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>(<span style="color:#ae81ff">10</span>);
+  <span style="color:#66d9ef">return</span> p;
+}
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test01</span>()
+{
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> s_p <span style="color:#f92672">=</span> func();
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>s_p <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>s_p <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>s_p <span style="color:#f92672">&lt;&lt;</span> endl;
+  <span style="color:#75715e">//堆区的数据 由程序员管理和开辟，程序员管理和释放
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//如果想释放堆区的数据，利用关键字 delete
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">//delete s_p;
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//cout &lt;&lt; *s_p &lt;&lt; endl;
+</span><span style="color:#75715e"></span>}
+  
+<span style="color:#75715e">//2.在堆区利用new开辟数组
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test02</span>()
+{	
+  <span style="color:#75715e">//创建10整数数据的数组，在堆区
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> arr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[<span style="color:#ae81ff">10</span>];		<span style="color:#75715e">//10代表数组中有10个元素
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>)
+  {
+      arr[i] <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">100</span>;		<span style="color:#75715e">//给10个元素赋值 100~109
+</span><span style="color:#75715e"></span>  }
+  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; j<span style="color:#f92672">++</span>)
+  {
+      cout <span style="color:#f92672">&lt;&lt;</span> arr[j] <span style="color:#f92672">&lt;&lt;</span> endl;
+  }
+  <span style="color:#75715e">//释放堆区数组
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//释放数组的时候要加 [ ]才可以
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">delete</span>[] arr;
+  
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//1.基本语法:new  数据类型
+</span><span style="color:#75715e"></span>  test01();
+  test02();
+  <span style="color:#75715e">//2.在堆区开辟数组
+</span><span style="color:#75715e"></span>  	
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：在堆区利用 new 开辟内存，用 delete 释放内存，值得注意的是开辟数组后释放时要加 [  ]，不然会报错。</p>
+<h3 id="2-引用">2 引用</h3>
+<hr>
+<h4 id="21-引用的基本使用">2.1 引用的基本使用</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：给变量起别名</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>数据类型 &amp;别名 = 原名</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  	
+  <span style="color:#75715e">//语法：数据类型 &amp;别名 = 原名
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>b <span style="color:#f92672">=</span> a;
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>b;
+  <span style="color:#75715e">//输出验证下
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;
+  	
+  <span style="color:#75715e">//利用指针改变地址中的数据，再次打印
+</span><span style="color:#75715e"></span>  <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+  cout <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>；别名和原名指向的是同一块内存中的数据，更改其中一个都能导致数据的变化。</p>
+<h4 id="22-引用的注意事项">2.2 引用的注意事项</h4>
+<ul>
+<li>
+<p><strong>引用必须初始换</strong></p>
+</li>
+<li>
+<p><strong>引用在初始化后，不可以改变</strong></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  	
+  <span style="color:#75715e">//引用的注意事项
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//引用必须初始化
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//引用在初始化后，不可以在改变
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+    <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>c; 		<span style="color:#75715e">//错误，没有初始化
+</span><span style="color:#75715e"></span>      
+      <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>c <span style="color:#f92672">=</span> a;
+    <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>c <span style="color:#f92672">=</span> b;		<span style="color:#75715e">//错误，初始化后，不可以改变
+</span><span style="color:#75715e"></span>  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：引用必须初始化，初始化完成后，不能再改变。</p>
+<h4 id="23-引用做函数参数">2.3 引用做函数参数</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：函数传递参数时，可以利用引用的技术让形参修饰实参</p>
+</li>
+<li>
+<p><strong>优点</strong>：可以简化指针修改实参</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//1.值传递
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mySwap</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b)
+{
+  <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> a;
+  a <span style="color:#f92672">=</span> b;
+  b <span style="color:#f92672">=</span> temp;
+}
+  
+<span style="color:#75715e">//2.地址传递
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mySwap01</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> a, <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p)
+{
+  <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>a;
+  <span style="color:#f92672">*</span>a <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>p;
+  <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> temp;
+}
+  
+<span style="color:#75715e">//3.值传递
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">mySwap02</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>a, <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>b)
+{
+  <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> a;
+  a <span style="color:#f92672">=</span> b;
+  b <span style="color:#f92672">=</span> temp;
+  	
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//引用作为函数参数与其他类型比较
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+  <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+  mySwap(a, b);		<span style="color:#75715e">//值传递:形参不直接改变实参
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;b = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  mySwap01(<span style="color:#f92672">&amp;</span>a, <span style="color:#f92672">&amp;</span>b);		<span style="color:#75715e">//地址传递:形参指针可以改变实参
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;b = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">30</span>;
+  <span style="color:#66d9ef">int</span> d <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+  mySwap02(c, d);		<span style="color:#75715e">//引用传递:引用形参可以改变实参
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;c = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;d = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> d <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：引用函数参数传递形参可以改变实参，相当于指针的使用。</p>
+<h4 id="24-引用做函数返回值">2.4 引用做函数返回值</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：引用是可以作为函数的返回值存在</p>
+</li>
+<li>
+<p><strong>注意</strong>：<strong>不要返回局部变量引用</strong></p>
+</li>
+<li>
+<p><strong>用法</strong>：函数调用作为左值</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//1.不要返回局部变量引用
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>test01()
+{
+  <span style="color:#66d9ef">int</span> NAME <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">//局部变量存放在栈区 函数执行完会被释放
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> NAME;
+  	
+}
+<span style="color:#75715e">//2.返回静态变量引用 函数调用可以作为左值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>test02()
+{
+  <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> NAME <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;		<span style="color:#75715e">//静态变量存放在全局区，全局区的数据在程序执行完之后系统释放
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">return</span> NAME;
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//引用作为函数的返回值
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>name <span style="color:#f92672">=</span> test01();		<span style="color:#75715e">//返回局部变量的引用：栈区
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> name <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> name <span style="color:#f92672">&lt;&lt;</span> endl;		<span style="color:#75715e">//第二次出现乱码
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>name01 <span style="color:#f92672">=</span> test02();		<span style="color:#75715e">//返回静态变量引用：全局区
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> name01 <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> name01 <span style="color:#f92672">&lt;&lt;</span> endl;		<span style="color:#75715e">//打印正常
+</span><span style="color:#75715e"></span>  
+  test02() <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;		<span style="color:#75715e">//函数的调用可以作为左值来进行赋值
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> name01 <span style="color:#f92672">&lt;&lt;</span> endl;
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：不要返回局部变量引用，也不要返回局部变量的地址，局部变量存储在栈区，函数执行完后，编译器会释放内存。</p>
+<h4 id="25-引用本质">2.5 引用本质</h4>
+<p><strong>本质</strong>：引用的本质在C++内部实现是一个指针常量。</p>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//发现是引用，转换 int * const ref = &amp;a;
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>ref) {
+  ref <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;		<span style="color:#75715e">//ref 引用，转换为 *ref = 100
+</span><span style="color:#75715e"></span>}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  	
+  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+  <span style="color:#75715e">//自动转换为 int * const ref = &amp;a；指针常量是指针指向不可更改，也说明为什么引用是不可更改的
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> ref <span style="color:#f92672">=</span> a;
+  ref <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;		<span style="color:#75715e">//内部发现是ref是引用，自动帮我们转换为：*ref = 20；
+</span><span style="color:#75715e"></span>  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ref = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> ref <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  func(a);
+  	
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：如果使用引用 <code>int&amp; ref = a</code>，编译器会自动转换为 <code>int * const ref = &amp;a</code>; <code>const</code>修饰常量，为指针常量，指针的指向不可更改，指针指向的地址的值可以修改，所以引用本质是指针常量。</p>
+<h4 id="26-常量引用">2.6 常量引用</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：常量引用主要用来修饰形参，防止误操作</p>
+<p>在函数参数列表中，可以加<code>const</code>修饰形参，防止形参改变实参</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//打印数据的函数
+</span><span style="color:#75715e"></span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">show</span>(<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>val) {		<span style="color:#75715e">//加入 const 防止引用时形参改变实参的数据
+</span><span style="color:#75715e"></span>  
+  <span style="color:#75715e">//val = 100;
+</span><span style="color:#75715e"></span>  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;val = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> val <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//常量引用
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//使用场景：用来修饰形参，防止误操作
+</span><span style="color:#75715e"></span>  
+  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+  	
+  <span style="color:#75715e">//加上const 后 编译器将代码修改为 int temp = 10 ;const int &amp;ref = temp;
+</span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>ref <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">//引用必须引一块合理的内存空间
+</span><span style="color:#75715e"></span>  	
+  <span style="color:#75715e">//ref = 20;	//加入const后变为只读，不可以修改
+</span><span style="color:#75715e"></span>  	
+  show(a);
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：引用不能直接常量，要引用合法的内存空间，加上 <code>const</code>后可以通过编译器得到正确的引用，用 <code>const</code> 来修饰形参来防止引用中的误操作。</p>
+<h3 id="3-函数提高">3 函数提高</h3>
+<hr>
+<h4 id="31-函数默认参数">3.1 函数默认参数</h4>
+<p>在C++中，函数的形参列表是可以有默认值得</p>
+<ul>
+<li>
+<p><strong>语法</strong>：返回值类型 函数名（参数=默认值）{}</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//函数的默认参数
+</span><span style="color:#75715e"></span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>, <span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>)
+{
+  <span style="color:#66d9ef">return</span> a <span style="color:#f92672">+</span> b <span style="color:#f92672">+</span> c;
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  	
+  <span style="color:#75715e">//1.如果某个位置参数是有默认值，那么从这个位置后，从左向右，必须都要有默认参数
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//2.如果函数声明有默认值，函数实现的时候就不能有默认值
+</span><span style="color:#75715e"></span>  	
+  cout <span style="color:#f92672">&lt;&lt;</span> func(<span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">30</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+  
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：如果函数有默认参数，那么这个位置后，从左往右，必须都要有默认参数，如果函数的声明有默认值，函数实现的时候就不能有默认值。</p>
+<h4 id="32-函数占位参数">3.2 函数占位参数</h4>
+<p>C++中函数的形参列表里可以有占位参数，用来做占位，调用函数时必须填补该位置</p>
+<ul>
+<li><strong>语法</strong>：<code>返回值类型 函数名 （数据类型）{}</code></li>
+</ul>
+<p>在现阶段函数的占位参数意义不大，但是后面的课程中会用到该技术</p>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span>) {
+  	
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;This is func&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//函数占位参数
+</span><span style="color:#75715e"></span>  func(<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">10</span>);
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+  
+}
+</code></pre></div></li>
+</ul>
+<h4 id="33-函数的重载">3.3 函数的重载</h4>
+<h5 id="331-函数重载概述">3.3.1 函数重载概述</h5>
+<p><strong>作用</strong>：函数名可以相同，提高复用性</p>
+<p><strong>函数重载满足条件</strong>：</p>
+<ul>
+<li>
+<p>同一个作用域下</p>
+</li>
+<li>
+<p>函数名称相同</p>
+</li>
+<li>
+<p>函数参数<em><strong>类型不同</strong> 或者 <strong>个数不同</strong> 或者</em><em>顺序不同</em>*</p>
+</li>
+<li>
+<p><strong>注意</strong>：</p>
+<p>函数的返回值不可以作为函数重载的条件</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//函数重载的满足条件下
+</span><span style="color:#75715e">//1.同一个作用域下
+</span><span style="color:#75715e">//2.函数名称相同
+</span><span style="color:#75715e">//3.函数参数类型不同，或者个数不同，或者顺序不同
+</span><span style="color:#75715e"></span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>() {
+  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func函数的调用&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> a) {
+  		
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func - 02 函数的调用&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">double</span> b) {
+  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func - 03 函数的调用&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#75715e">//注意事项
+</span><span style="color:#75715e">//函数的返回值不可以作为函数重载的条件
+</span><span style="color:#75715e"></span>  
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#75715e">//函数的重载
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">//可以让函数名相同，提高复用性
+</span><span style="color:#75715e"></span>  func();
+  func(<span style="color:#ae81ff">10</span>);
+  func(<span style="color:#ae81ff">3.14</span>);
+  
+  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>注意</strong>：函数重载必须满足三个条件，函数名称相同，函数作用域相同，函数参数类型不同或者个数不同，或者顺序不同，注意函数的返回值不能作为函数重载的条件。</p>
+<h5 id="332-函数重载注意事项">3.3.2 函数重载注意事项</h5>
+<ul>
+<li>
+<p>引用作为重载的条件</p>
+</li>
+<li>
+<p>函数重载碰到函数默认参数</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+  
+<span style="color:#75715e">//函数重载的注意事项
+</span><span style="color:#75715e">//1.引用作为重载的条件
+</span><span style="color:#75715e"></span>  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>a) {		<span style="color:#75715e">//int &amp;a =  10;引用必须引用一个合法的内存空间，栈区或者堆区数据，常量在常量区
+</span><span style="color:#75715e"></span>  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func (int &amp;a) 函数的执行&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func</span>( <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>a) {		<span style="color:#75715e">//const int &amp;a = 10;const会创建临时变量来存放常量的值
+</span><span style="color:#75715e"></span>  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func (const int &amp;a) 函数的执行&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+  
+  
+<span style="color:#75715e">//2.函数重载碰到默认参数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func2</span>(<span style="color:#66d9ef">int</span> a) {
+  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func2 （int &amp;a）函数的执行&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+  
+}
+  
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">func2</span>(<span style="color:#66d9ef">int</span> a, <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>) {
+  
+  cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;func2 (int &amp;a) 函数的执行&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+  
+  <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;		<span style="color:#75715e">//a是一个变量，可读可写
+</span><span style="color:#75715e"></span>  	
+  func(a);		<span style="color:#75715e">//可读可写状态的引用
+</span><span style="color:#75715e"></span>  func(<span style="color:#ae81ff">10</span>);		<span style="color:#75715e">//因为引用常量是不合法的，因此执行 const int &amp;a 的函数
+</span><span style="color:#75715e"></span>  	
+  <span style="color:#75715e">//func2(20);		//函数碰到默认参数时，出现二义性，尽量避免函数默认参数的情况
+</span><span style="color:#75715e"></span>  system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：引用可以作为重载条件，<code>const</code>引用和不加<code>const</code>参数可以作为函数的重载条件，当函数碰到有默认参数的情况时，传入一个参数会出现二义性，建议避免函数有默认参数做函数重载的情况。</p>
+<h3 id="4-类和对象">4 类和对象</h3>
+<hr>
+<p>C++面向对象的三大特性：封装、继承、多态</p>
+<!-- raw HTML omitted -->
+<p><strong>例如</strong>：</p>
+<p>​		人可以作为对象，属性有姓名、年龄、身高、体重&hellip;.，行为有走、跑、 跳、吃饭、唱歌&hellip;.</p>
+<p>​		车可以作为对象，属性有轮胎、方向盘、车灯&hellip;.，行为有载人、放音乐、放空调&hellip;</p>
+<p>​		具有相同性质的对象，我们可以抽象称为类，人属于人类，车属于车类。</p>
+<h4 id="41-封装">4.1 封装</h4>
+<h5 id="411-封装的意义">4.1.1 封装的意义</h5>
+<p>封装是C++面向对象三大特性之一</p>
+<p>封装的意义：</p>
+<ul>
+<li>将属性和行为作为一个整体，表现生活中的事物</li>
+<li>将属性和行为加以权限控制</li>
+</ul>
+<p><strong>封装意义一</strong>：</p>
+<p>​		在设计类的时候，属性和行为写在一起，表现事物</p>
+<ul>
+<li>
+<p><strong>语法</strong>：<code>class 类名 {访问权限：属性 / 行为}</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：设计一个圆类，求圆的周长</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+</code></pre></div></li>
+</ul>
+<p>const double PI = 3.14;</p>
+<p>//设计一个圆类(类)，求圆的周长</p>
+<p>class Circle
+{
+//访问权限
+//属性
+//行为
+public:
+//属性
+int M_R;
+//行为，获取圆的周长
+void calculateZC();</p>
+<p>private:</p>
+<p>};</p>
+<p>void Circle::calculateZC()
+{
+cout &laquo; &ldquo;圆的周长为：&rdquo; &laquo;2 * PI * M_R&laquo; endl;
+}
+int main() {</p>
+<pre><code>//通过圆类 创建具有的圆（对象）
+//实例化对象
+Circle c1;
+
+//给圆对象属性赋值
+c1.M_R = 10;
+
+c1.calculateZC();
+//cout &lt;&lt; &quot;圆的周长为：&quot; &lt;&lt; c1.calculateZC() &lt;&lt; endl;
+
+system(&quot;pause&quot;);
+return 0;
+</code></pre>
+<p>}</p>
+<pre><code>
+
+**总结**：创建一个类用class，类里面包括访问权限、属性、行为方法，在函数主体部分，通过类创建一个具体的对象（实例化对象），在给对象赋值，封装的意义是用属性和行为作为一个整体来变现一个事物。
+
+
+
+- **示例**2：设计一个学生类，属性有姓名和学号，可以给姓名和学号赋值，可以显示学生的姓名和学号
+
+```C++
+#include&lt;iostream&gt;
+#include&lt;string&gt;
+using namespace std;
+
+//设计一个学生类，属性有姓名，学号，
+//可以给学生姓名和学号赋值，可以显示学生的姓名和学号
+class Student
+{
+public:		//公共权限
+  
+  //类中的属性和行为 我们统称为成员
+  //属性	成员属性	成员变量
+  //行为	成员函数	成员方法
+
+  string m_name;		//姓名属性
+  int m_id;		//学号属性
+  void Iput() {		//用户输入操作 行为：给姓名学号赋值
+      cout &lt;&lt; &quot;输入学生的姓名学号：&quot; &lt;&lt; endl;
+      cin &gt;&gt; m_name &gt;&gt; m_id;
+
+  }
+  void SetName(string name) {		//给姓名赋值	行为给属性赋值
+  
+      m_name = name;
+  }
+
+  void SetId(int id) {		//给学号赋值	行为给属性赋值
+  
+      m_id = id;
+  }
+
+  void ShowStudent() {		//成员函数		输出的实现
+  
+      cout &lt;&lt; &quot;姓名：&quot; &lt;&lt; m_name &lt;&lt; endl;
+      cout &lt;&lt; &quot;学号：&quot; &lt;&lt; m_id &lt;&lt; endl;
+  }
+private:
+
+};
+
+int main() {
+  
+  Student S1;		//实例化对象S1
+  Student S;		//实例化对象S
+
+  S1.SetName(&quot;张三&quot;);		//第一种赋值方式
+  S1.SetId(123133);
+  S.Iput();		//第二种赋值方式
+
+  S.ShowStudent();		//对象行为 输出的实现
+  S1.ShowStudent();
+
+  system(&quot;pause&quot;);
+  return 0;
+}
+</code></pre><p><strong>总结</strong>：创建类后定义成员变量和成员函数，即属性和行为，通过行为给属性赋值，将属性和行为封装成一个类。</p>
+</article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+  <div class="footer container-lg width-full p-responsive" role="contentinfo">
+    <div
+        class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+            <li class="mr-3 mr-lg-0"></a></li>
+        </ul>
+
+        <a aria-label="Homepage" title="My New Hugo Site" class="footer-octicon d-none d-lg-block mx-lg-4"
+            href="https://biejinxin.github.io/">
+            <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+            </svg>
+        </a>
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        </ul>
+    </div>
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 text-gray-light"></span>
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://biejinxin.github.io/js/frameworks.js"></script>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://biejinxin.github.io/js/github-bootstrap.js"></script>
+<script src="https://biejinxin.github.io/js/stop.js"></script>
+<script src="https://biejinxin.github.io/js/contributions.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://biejinxin.github.io/css/frameworks.css" />
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://biejinxin.github.io/css/github.css" />
+    
+    <link crossorigin="anonymous" media="(prefers-color-scheme: dark)" rel="stylesheet"
+        href="https://biejinxin.github.io/css/dark.css" />
+    
+    <meta name="viewport" content="width=device-width">
+    <meta name="description"
+        content="1 数据类型  1.1 C&#43;&#43;函数的通用模板   示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; int main() { system(&amp;#34;pause&amp;#34;); return 0; }   1.2 数据的输入   作用：实现数据的输入
+  语法 ：cin &amp;gt;&amp;gt; 变量名;
+  示例：
+//作用：用于从键盘获取数据  //cin &amp;gt;&amp;gt; 变量  //1.整型的输入  int num = 0; cout &amp;lt;&amp;lt; &amp;#34;请给整型变量赋值：&amp;#34; &amp;lt;&amp;lt; endl; cin &amp;gt;&amp;gt; num; cout &amp;lt;&amp;lt; &amp;#34;整型变量num =&amp;#34; &amp;lt;&amp;lt; num &amp;lt;&amp;lt; endl; //2.浮点型的输入  float f = 0; //3.字符型变量输入  char ch = &amp;#39;a&amp;#39;; //4." />
+    <meta name="keywords"
+        content="" />
+    <meta name="robots" content="noodp" />
+    <link rel="canonical" href="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;01/" />
+
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PracticeC&#43;&#43;01 - My New Hugo Site" />
+    <meta name="twitter:description"
+        content="1 数据类型  1.1 C&#43;&#43;函数的通用模板   示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; int main() { system(&amp;#34;pause&amp;#34;); return 0; }   1.2 数据的输入   作用：实现数据的输入
+  语法 ：cin &amp;gt;&amp;gt; 变量名;
+  示例：
+//作用：用于从键盘获取数据  //cin &amp;gt;&amp;gt; 变量  //1.整型的输入  int num = 0; cout &amp;lt;&amp;lt; &amp;#34;请给整型变量赋值：&amp;#34; &amp;lt;&amp;lt; endl; cin &amp;gt;&amp;gt; num; cout &amp;lt;&amp;lt; &amp;#34;整型变量num =&amp;#34; &amp;lt;&amp;lt; num &amp;lt;&amp;lt; endl; //2.浮点型的输入  float f = 0; //3.字符型变量输入  char ch = &amp;#39;a&amp;#39;; //4." />
+    <meta name="twitter:site" content="https://biejinxin.github.io/" />
+    <meta name="twitter:creator" content="" />
+    <meta name="twitter:image"
+        content="https://biejinxin.github.io/">
+
+    
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PracticeC&#43;&#43;01 - My New Hugo Site">
+    <meta property="og:description"
+        content="1 数据类型  1.1 C&#43;&#43;函数的通用模板   示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; int main() { system(&amp;#34;pause&amp;#34;); return 0; }   1.2 数据的输入   作用：实现数据的输入
+  语法 ：cin &amp;gt;&amp;gt; 变量名;
+  示例：
+//作用：用于从键盘获取数据  //cin &amp;gt;&amp;gt; 变量  //1.整型的输入  int num = 0; cout &amp;lt;&amp;lt; &amp;#34;请给整型变量赋值：&amp;#34; &amp;lt;&amp;lt; endl; cin &amp;gt;&amp;gt; num; cout &amp;lt;&amp;lt; &amp;#34;整型变量num =&amp;#34; &amp;lt;&amp;lt; num &amp;lt;&amp;lt; endl; //2.浮点型的输入  float f = 0; //3.字符型变量输入  char ch = &amp;#39;a&amp;#39;; //4." />
+    <meta property="og:url" content="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;01/" />
+    <meta property="og:site_name" content="PracticeC&#43;&#43;01" />
+    <meta property="og:image"
+        content="https://biejinxin.github.io/">
+    <meta property="og:image:width" content="2048">
+    <meta property="og:image:height" content="1024">
+    
+    <meta property="article:published_time" content="2020-12-07 08:17:32 &#43;0000 UTC" />
+    
+
+    
+    
+
+    
+    
+
+    <title>PracticeC&#43;&#43;01 - My New Hugo Site</title>
+
+    <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://biejinxin.github.io/images/favicon.ico">
+    <meta name="theme-color" content="#1e2327">
+
+    
+    
+    
+    
+</head>
+
+<body class="env-production emoji-size-boost page-responsive page-profile">
+  <div class="position-relative js-header-wrapper ">
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+        <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+    <header class="Header py-lg-0 js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+        <div class="Header-item d-none d-lg-flex">
+            <a class="Header-link" href="https://biejinxin.github.io/" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div
+            class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+            <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to"
+                role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox"
+                aria-expanded="false">
+                <div class="position-relative">
+                </div>
+            </div>
+        </div>
+        <nav class="d-flex" aria-label="Global">
+            <a class="js-selected-navigation-item Header-link py-lg-3">&nbsp;</a>
+        </nav>
+        <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative" style="margin-right: auto;">
+            <a class="Header-link" href="https://biejinxin.github.io/" aria-label="Homepage"
+                data-ga-click="Header, go to dashboard, icon:logo">
+                <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1"
+                    width="32" aria-hidden="true">
+                    <path fill-rule="evenodd"
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+            </a>
+        </div>
+        <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+            <details class="details-overlay details-reset">
+                <summary class="Header-link" aria-label="View profile and more"
+                    data-ga-click="Header, show menu, icon:avatar">
+                    
+                    <img alt="" class="avatar" src="https://biejinxin.github.io/images/avatar.png" height="20" width="20">
+                    
+                </summary>
+            </details>
+        </div>
+    </header>
+</div>
+
+<div id="start-of-content" class="show-on-focus"></div>
+<div id="js-flash-container">
+</div>
+
+  
+<div class="application-main " data-commit-hovercards-enabled="">
+    <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+        <main>
+            <div class="pagehead repohead instapaper_ignore readability-menu experiment-repo-nav pt-0 pt-lg-4 ">
+                <div class="repohead-details-container clearfix container-lg p-responsive d-none d-lg-block">
+                    <div class="mb-3 d-flex">
+                        <h1 class="public css-truncate float-none flex-auto width-fit pl-0">
+                            <a class="avatar mr-1" href="https://biejinxin.github.io/about/">
+                                
+                                    <img src="https://biejinxin.github.io/images/avatar.png" width="26" height="26">
+                                
+                            </a>
+                            <span class="author"><a href="https://biejinxin.github.io/"></a></span>
+                            <span class="path-divider">/</span>
+                            <strong itemprop="name" class="css-truncate-target" style="max-width: 410px"><a
+                                    href="https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;01/">PracticeC&#43;&#43;01</a></strong>
+
+                            <div class="d-block text-small text-gray">
+                                Created <time-ago datetime="Mon, 07 Dec 2020 08:17:32 &#43;0000" class="no-wrap">
+                                    Mon, 02 Jan 2006 15:04:05 -0700</time-ago>
+                                <span class="file-info-divider"></span>
+                                Modified <time-ago datetime="Mon, 07 Dec 2020 08:17:32 &#43;0000" class="no-wrap">
+                                        Mon, 02 Jan 2006 15:04:05 -0700</time-ago>
+                            </div>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-responsive">
+                <div class="repository-content ">
+                    <div class="Box mt-3 position-relative">
+                        <div class="Box-header py-2 d-flex flex-column flex-shrink-0 flex-md-row flex-md-items-center">
+                            <div class="text-mono f6 flex-auto pr-3 flex-order-2 flex-md-order-1 mt-2 mt-md-0">
+                                15074 Words
+                                
+                            </div>
+                        </div>
+
+                        <div id="readme" class="Box-body readme blob instapaper_body js-code-block-container">
+                            <article class="markdown-body entry-content p-3 p-md-6" itemprop="text"><h3 id="1-数据类型">1 数据类型</h3>
+<hr>
+<h4 id="11-c函数的通用模板">1.1 C++函数的通用模板</h4>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<h4 id="12-数据的输入">1.2 数据的输入</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：实现数据的输入</p>
+</li>
+<li>
+<p><strong>语法</strong> ：<code>cin &gt;&gt; 变量名;</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++">        <span style="color:#75715e">//作用：用于从键盘获取数据
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//cin &gt;&gt; 变量
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.整型的输入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请给整型变量赋值：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        cin <span style="color:#f92672">&gt;&gt;</span> num;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;整型变量num =&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//2.浮点型的输入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">float</span> f <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#75715e">//3.字符型变量输入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">char</span> ch <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+                  
+        <span style="color:#75715e">//4.字符串变量输入
+</span><span style="color:#75715e"></span>        string str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;hello&#34;</span>;
+        <span style="color:#75715e">//5.bool变量的输入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">bool</span> flag <span style="color:#f92672">=</span> true;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：数据的输入直接通过<code>cin &gt;&gt; </code>从键盘输入。</p>
+<h4 id="13--实型浮点型">1.3  实型（浮点型）</h4>
+<ul>
+<li><strong>作用</strong>：用于表示小数。</li>
+</ul>
+<p>浮点型变量分为两种：</p>
+<pre><code>1.单精度 float
+
+2.双精度 double
+</code></pre>
+<p>两者的区别在于表示的有效数字的范围不同。</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>占用空间</th>
+<th>有效数字范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>float</td>
+<td>4字节</td>
+<td>7位有效数字</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8字节</td>
+<td>15-16位有效数字</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//1.单精度  float
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.双精度  double
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">float</span> f1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.14f</span>;
+        <span style="color:#66d9ef">double</span> d1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.1415926</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;单精度：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> f1 <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;双精度：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> d1 <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//统计float 和 double 占用的内存空间为；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//cout &lt;&lt; &#34;float占用的内存空间：&#34; &lt;&lt; sizeof(float) &lt;&lt; endl;
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>:单精度 float类型所占的内存空间为4，而双精度double类型所占的内存空间为8个字节，其中sizeof是运算符，用于计算数据所占的字节长度.</p>
+<h4 id="14--字符型">1.4  字符型</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：字符型变量用于显示单个字符</p>
+</li>
+<li>
+<p><strong>语法</strong>： <code>char ch = ‘ a ’；</code></p>
+<blockquote>
+<p>注意：在显示字符型变量时，用单引号将字符括起来，不能用双引号</p>
+</blockquote>
+<blockquote>
+<p>注意：单引号内只能有一个字符，不可以是字符串</p>
+</blockquote>
+</li>
+<li>
+<p>C和C++中字符变量只占用一个字节。</p>
+</li>
+<li>
+<p>字符型变量并不是把字符本身放到内存中存储，而是将对应的ASCII编码放入存储单元</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：字符变量用于显示单个字符
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//语法：char ch = &#39;a&#39;；
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">char</span>  ch_num <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;a&#39;</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> ch_num <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(ch_num) <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//char 不能用双引号；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//char 单引号内只能引用一个字符；
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：char用于显示单个字符 ' ' 中间加字符，而不是加&quot; &ldquo;,这两个符号有本质区别，由于char的局限性，只能引用单个字符。</p>
+<h4 id="15---字符串类型">1.5   字符串类型</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于表示一串字符</p>
+</li>
+<li>
+<p><strong>两种风格</strong></p>
+<p>1.C风格字符串：<code>char 变量名[] = &quot;字符串值&quot;</code></p>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：用于表示一串字符；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//C语言风格的字符串：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//char 变量[] = &#34;字符串量&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//C++风格的字符串：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//string 变量[] = &#34;字符变量&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">char</span> ch[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello world&#34;</span>;
+        string str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello world&#34;</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> ch <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> str <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><blockquote>
+<p>注意：C风格字符串要用双引号括起来</p>
+</blockquote>
+<p>2.C++风格字符串：<code>string 变量名 [] = &quot;字符串值&quot;</code></p>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：用于表示一串字符；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//C语言风格的字符串：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//char 变量[] = &#34;字符串量&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//C++风格的字符串：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//string 变量[] = &#34;字符变量&#34;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">char</span> ch[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello world&#34;</span>;
+        string str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello world&#34;</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> ch <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> str <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><blockquote>
+<p>注意：C++风格字符串用 string 定义，也是用双引号括起来</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>总结</strong>：<code>string 变量[]=&quot;字符变量&quot;</code>的方式定义字符串，在引用之前必须加上头文件<code>#include&lt;string&gt;</code>,不然会出现以下错误。</p>
+<p><img src="E:%5CMyC++-Database%5Cimage%5CImage_1.png" alt=""></p>
+<h4 id="16-布尔数据类型变量">1.6 布尔数据类型变量</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：布尔数据类型代表值得真或假</p>
+</li>
+<li>
+<p><code>bool</code>数据类型只有两个值</p>
+<ol>
+<li>true &mdash; 真 （本质为1）</li>
+<li>false &mdash; 假 （本质为0）</li>
+</ol>
+</li>
+<li>
+<p><strong><code>bool</code>类型占一个字节大小</strong></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：布尔数据类型代表真或假的值
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//bool类型只有两个值
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.true -- 真（本质是1）
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.false -- 假（本质是0）
+</span><span style="color:#75715e"></span>          
+        <span style="color:#66d9ef">bool</span> flag <span style="color:#f92672">=</span> true;
+        cout <span style="color:#f92672">&lt;&lt;</span> flag <span style="color:#f92672">&lt;&lt;</span> endl;
+        flag <span style="color:#f92672">=</span> false;
+        cout <span style="color:#f92672">&lt;&lt;</span> flag <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;sizeof of bool :&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(<span style="color:#66d9ef">bool</span>) <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：布尔数据类型代表真值或者假值,用 0 和 1 或者 true 和 false 表示,数据的值只有两个。</p>
+<h4 id="17-sizeof关键字">1.7 <code>sizeof</code>关键字</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：利用 <code>sizeof</code> 关键字可以统计数据类型所占内存大小</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>sizeof（数据类型/变量）</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//整形: short(2)  int(4)  long(4)  long long(8)
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//可以利用sizeof求出数据类型占用的内存大小
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//语法: sizeof(数据类型/变量)
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">short</span> num1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;short 占用的内存大小：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num1 <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：<code>sizeof</code>用于计算数据类型占用的内存大小，一定要注意语法的使用以及对<code>sizeof</code>的理解，与<code>strlen</code>的区别。</p>
+<h3 id="2-运算符">2 运算符</h3>
+<hr>
+<ul>
+<li>
+<p><strong>作用</strong>：用于执行代码的运算</p>
+<p>了解多种运算符</p>
+<table>
+<thead>
+<tr>
+<th>运算符类型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>算术运算符</td>
+<td>用于处理四则运算</td>
+</tr>
+<tr>
+<td>赋值运算符</td>
+<td>用于将表达式的值赋值个变量</td>
+</tr>
+<tr>
+<td>比较运算符</td>
+<td>用于表达式的比较，并返回一个真值或假值</td>
+</tr>
+<tr>
+<td>逻辑运算符</td>
+<td>用于根据表达式的值返回真值或假值</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h4 id="21-加减乘除运算符">2.1 加减乘除运算符</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于处理四则运算</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//加减乘除
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//注意：两个整数相除，结果依然是整数，将小数部分去除
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//注意：运算的结果跟进行运算的变量的类型是一样的
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：运算结果跟运算前的变量的类型是一样的，不改变数据类型，如果float 类型与 int 类型运算，这里就涉及到数据类型的转换，将 int 类型转换成 float 类型在进行运算，结果为 float 类型，用此类特性可以解决分配问题，例如两个 int 类型的数据相除只会保留整数部分。</p>
+<h4 id="22-逻辑运算符">2.2 逻辑运算符</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于根据表达式的值返回真值或假值</p>
+<p>逻辑运算符有以下符号：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>术语</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>!</td>
+<td>非</td>
+<td>!a</td>
+<td>如果a为假，则!a为真；如果a为真，则!a为假</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>与</td>
+<td>a&amp;&amp;b</td>
+<td>如果a和b都为真，则结果为真，否则为假</td>
+</tr>
+<tr>
+<td>||</td>
+<td>或</td>
+<td>a||b</td>
+<td>a,b只要有一个为真，则结果为真，其中有一个为假，则结果为假</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：用于根据表达式的值返回真值或假值
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//逻辑非  ！
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//逻辑与  &amp;&amp;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//逻辑或  ||
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//注意：在C++中只要值不为0，则值为真
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：逻辑非 ！取反操作，真假转换，逻辑与 &amp;&amp; 前后表达式或值都为真时返回真，反之则返回假，逻辑或 || 前后表达式或值中的只要一个为真就返回真，最重要的一点是，C++中只要值不为 0 默认返回真。</p>
+<h4 id="23--赋值运算符">2.3  赋值运算符</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于将表达式的值赋给变量</p>
+<p>赋值运算符包括以下几个符号：</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>术语</th>
+<th>示例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>赋值</td>
+<td>a=2,b=3</td>
+<td>a=2,b=3</td>
+</tr>
+<tr>
+<td>+=</td>
+<td>加等于</td>
+<td>a=0,a+=2</td>
+<td>a=2</td>
+</tr>
+<tr>
+<td>-=</td>
+<td>减等于</td>
+<td>a=5,a-=3</td>
+<td>a=2</td>
+</tr>
+<tr>
+<td>*=</td>
+<td>乘等于</td>
+<td>a=2,a*=2</td>
+<td>a=4</td>
+</tr>
+<tr>
+<td>/=</td>
+<td>除等于</td>
+<td>a=4,a/=2</td>
+<td>a=2</td>
+</tr>
+<tr>
+<td>%=</td>
+<td>模等于</td>
+<td>a=3,a%=2</td>
+<td>a=1</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>示例</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：将表达式的值赋值给变量
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.a += a;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.a *= a;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.a /= a;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//4.a -= a;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//5.a %= a;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+        <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+        a <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+        b <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;b的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：赋值运算符都能拆分，如图上的 5 种，基本验证一次就能知道运算的规律。</p>
+<h4 id="24-递增递减">2.4 递增递减</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于处理递增递减的操作</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{       
+        <span style="color:#75715e">//递增运算符
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.a++；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.++a；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//递减运算符
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.a--;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.--a;
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#f92672">++</span>a;<span style="color:#75715e">//前置递增，变量先加1；
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+        a<span style="color:#f92672">++</span>;<span style="color:#75715e">//后置递增，变量运算完了在加1；
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;a的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//前置递增和后置递增的区别；
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> num_1 <span style="color:#f92672">=</span> num<span style="color:#f92672">++</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;num_1的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num_1 <span style="color:#f92672">&lt;&lt;</span> endl;
+        num <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> num_2 <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>num <span style="color:#f92672">*</span> <span style="color:#ae81ff">10</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;num = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;num_2的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num_2 <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这里要注意的是 a++ 和 ++a 的区别，a++ 是先返回 a 的 值，在进行加操作.++a 是先进行加操作，再返回 a 的值，测试程序<code> int a = 0 ;if (a++){cout&lt;&lt;&quot;这里的代码没有执行&quot;} ，else if（++a）{cout&lt;&lt;&quot;这里的代码执行了&quot;}.</code>很显然这里输出的是 &ldquo;这里的代码执行了&rdquo; .不难看出其中的区别。</p>
+<h4 id="25-比较运算符">2.5 比较运算符</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于两个变量的比较返回真值或假值</p>
+</li>
+<li>
+<p><strong>示例</strong>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：用于表达式的比较，并返回一个真值或假值
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这里不做过多说明了，a &gt; b 真则返回 1 ，假则返回 0；没什么重点的地方，主要用于条件判断语句.</p>
+<h4 id="26-取模运算以及取整运算">2.6 取模运算以及取整运算</h4>
+<ul>
+<li>
+<p><strong>作用</strong>:用于取模和取整操作</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>a/b;a%b;</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//作用：用于取余数
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> num_ <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> num_1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;运算结果为：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num_<span style="color:#f92672">%</span>num_1 <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：% 运算符用于取余，/ 运算符用于取整 ，取整的原理应该明白：例如上面的例子 <code>num / num_1 </code>运算前后数据类型不发生改变 ，那么运算后小数部分舍去，保留整数部分。</p>
+<h3 id="3-程序流程设计">3 程序流程设计</h3>
+<hr>
+<p>C/C++支持最基本的三种程序运行结构：顺序结构、选择结构、循环结构</p>
+<ul>
+<li>顺序结构：程序按顺序执行，不发生跳转</li>
+<li>选择结构：依据条件是否满足，有选择的执行相应的功能</li>
+<li>循环结构：依据条件是否满足，循环多次执行某段代码</li>
+</ul>
+<h4 id="31-if-语句的使用">3.1 if 语句的使用</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：执行满足条件的语句</p>
+<p>if 语句的三种形式</p>
+<ul>
+<li>
+<p>单行格式 if 语句</p>
+</li>
+<li>
+<p>多行格式 if 语句</p>
+</li>
+<li>
+<p>多条件的 if 语句</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>1.单行格式 if 语句：<code>if (条件) {条件满足执行的语句}</code></p>
+<pre><code class="language-flow" data-lang="flow">st=&gt;start: 开始
+cond=&gt;condition: 登陆成功 Yes or No?
+op=&gt;operation: 执行语句
+e=&gt;end: 结束
+
+st-&gt;cond-&gt;op-&gt;e
+cond(yes)-&gt;op
+cond(no)-&gt;e
+</code></pre><ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{       
+        <span style="color:#75715e">//C/C++支持基本的三种程序运行结构：顺序结构、选择结构、循环结构
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.顺序结构：程序按顺序执行，不发生跳转
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.选择结构：依据条件是否满足，有选择的执行相应功能
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.循环结构：依据条件是否满足，循环多次执行某段代码
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//选择结构--if语句
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//if语句的三种形式：1.单行语句形式  2.多行语句形式  3.多条件语句形式
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//格式：if(条件){ 条件满足执行代码 }
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> num;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;输入一个分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        cin <span style="color:#f92672">&gt;&gt;</span> num;
+        <span style="color:#66d9ef">if</span> (num <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">500</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;恭喜考上一本&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        <span style="color:#66d9ef">else</span>
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;你的分数为：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> num <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：了解程序中的三种结构：1.顺序结构 2.选择结构 3.循环结构 。这里主要介绍了 if 语句&ndash;选择结构，通过</p>
+<p>if (条件) {条件满足时执行的代码}，这里依据条件是否满足来执行相应的代码，注意：括号里的条件可以是 1 和 0</p>
+<p>或者<code> true</code> 和 <code>flase</code>。满足的话就执行之后的代码。</p>
+<h4 id="32-嵌套-if-语句">3.2 嵌套 if 语句</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：在 if 语句中，可以嵌套使用 if 语句，达到更精确的条件判断</p>
+</li>
+<li>
+<p><strong>案例需求</strong>：</p>
+<p>实例：输入你的分数，如果你的分数在400-500之间则恭喜你考上三本，500-600之间则恭喜你考上二本，600以上则恭喜你考上一本，如果分数超过700则恭喜你考上清华大学。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//if语句中在嵌套一个if语句
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//实例需求
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> sorce;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入你的分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        cin <span style="color:#f92672">&gt;&gt;</span> sorce;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;你的分数为：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> sorce <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">400</span><span style="color:#f92672">&lt;</span>sorce<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">500</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;恭喜考上三本&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">500</span><span style="color:#f92672">&lt;</span>sorce<span style="color:#f92672">&lt;</span><span style="color:#ae81ff">600</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;恭喜考上二本&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(sorce<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">600</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;恭喜考上一本&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">if</span> (sorce<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">700</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;考上清华大学&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               }
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这里通过实例来解释嵌套 if 语句，<strong>实例：输入你的分数，如果你的分数在400-500之间则恭喜你考上三本，500-600之间则恭喜你考上二本，600以上则恭喜你考上一本，如果分数超过700则恭喜你考上清华大学</strong>。这里的600-800区间中间就需要用到嵌套 if 语句来实现数据的更精确分类。</p>
+<h4 id="33-嵌套循环">3.3 嵌套循环</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：在循环体中在嵌套一层循环，解决一些实际问题</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//在循环体中再嵌套一层，解决一些实际问题；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//9*9 *打印；
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> i, j;
+        <span style="color:#66d9ef">for</span> ( i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>; i<span style="color:#f92672">++</span>)
+        {       
+                 
+               <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>;j<span style="color:#f92672">++</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;*&#34;</span> ;
+               }
+               cout <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：嵌套循环类似的，就是在循环体内在嵌套一层循环，根据实际问题选择合适的解题方法很重要。</p>
+<h4 id="34-嵌套循环-乘法口诀表的打印">3.4 嵌套循环-乘法口诀表的打印</h4>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//乘法口诀表的输出
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//案例描述；利用嵌套循环，实现九九乘法表
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> data[<span style="color:#ae81ff">9</span>] <span style="color:#f92672">=</span> { <span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span> };
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">9</span>; i<span style="color:#f92672">++</span>)
+        {
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> ; j<span style="color:#f92672">++</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> data[j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;x&#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> data[i] <span style="color:#f92672">*</span> data[j];
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;  &#34;</span>;
+               }
+               cout <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+          
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：定义数组容纳 1-9 等数据，思路分析：9*9 乘法口诀表分行和列，那么定义它的行和列，分别用i 和 j 表示，图上的程序 i 为行，j 为列，然后再看输出第一行输出，“ 1 x 1 ”就相当于 data[0] x data[0]，第二行输出，&rdquo; 1 x 2    2 x 2&quot; 这里可以看出 其中的 “2”没变即行的值是不变的 ，那么以行号做为外部循环，列数则小于等于行数，才能保证这种输出。</p>
+<h4 id="35-三目运算符">3.5 三目运算符</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：通过三目运算符实现简单的判断</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>表达式1 ？ 表达式2 ：表达式3</code></p>
+</li>
+<li>
+<p><strong>解释</strong>：</p>
+<p>如果表达式1的值为真，执行表达式2，并且返回表达式2的结果；</p>
+<p>如果表达式1的值为真，执行表达式3，并返回表达式3的结果；</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//三目运算符:
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//表达式1?表达式2：表达式3
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//创建三个变量 a,b,c  将a,b作比较，将变量大的赋值给变量c
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+        <span style="color:#66d9ef">int</span> c;
+        c <span style="color:#f92672">=</span> (a <span style="color:#f92672">&gt;</span> b <span style="color:#f92672">?</span> a : b);
+        <span style="color:#75715e">//在c++中三目运算符返回的变量，可以继续赋值
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> c <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：主要格式，<code>表达式1 ? 表达式2 ：表达式3</code>，可以理解为一个问句，别人问你 表达式1 成立吗？你说成立，那就执行 表达式2 ，反之，不成立就执行 表达式3，重点：如果用变量承接三目运算符里的值，那么这个变量可以继续赋值。</p>
+<h4 id="36-switch-语句">3.6 switch 语句</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：执行多条件分支语句</p>
+</li>
+<li>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#66d9ef">switch</span>(<span style="color:#960050;background-color:#1e0010">表达式</span>)
+  
+{
+      <span style="color:#66d9ef">case</span> <span style="color:#960050;background-color:#1e0010">结果</span><span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">执行语句</span>;<span style="color:#66d9ef">break</span>;
+          
+      <span style="color:#66d9ef">case</span> <span style="color:#960050;background-color:#1e0010">结果</span><span style="color:#ae81ff">2</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">执行语句</span>;<span style="color:#66d9ef">break</span>;
+          
+          ....
+      
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span><span style="color:#960050;background-color:#1e0010">执行语句</span>;<span style="color:#66d9ef">break</span>;
+          
+}
+</code></pre></div></li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//switch 语句
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> option;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请给电影打分:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        cin <span style="color:#f92672">&gt;&gt;</span> option;
+        <span style="color:#66d9ef">switch</span> (option)
+        {
+               <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">:</span>
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;经典电影&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+                       <span style="color:#66d9ef">break</span>;
+               <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">9</span><span style="color:#f92672">:</span>
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;非常好的电影&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+                       <span style="color:#66d9ef">break</span>;
+               <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">8</span><span style="color:#f92672">:</span>
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;一般电影&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+                       <span style="color:#66d9ef">break</span>;
+               <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;烂片&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+                       <span style="color:#66d9ef">break</span>;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：<code>switch (option) {case.......}</code> 的标准定义格式，见 switch 把必定加上 case，记得每个分支执行完之后必须加上 break 跳出循环。</p>
+<h4 id="37-跳转语句">3.7 跳转语句</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于跳出选择结构或者循环结构</p>
+<p>break使用的时机：</p>
+<ul>
+<li>
+<p>出现在 switch 条件语句中，作用是终止 case 并跳出 switch</p>
+</li>
+<li>
+<p>出现在循环语句中，作用是跳出当前的循环语句</p>
+</li>
+<li>
+<p>出现在嵌套循环中，跳出最近的内层循环语句</p>
+</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//break 的使用时间;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.出现再switch语句
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> select;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输出难度&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        cin <span style="color:#f92672">&gt;&gt;</span> select;
+        <span style="color:#66d9ef">switch</span> (select)
+        {
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;普通难度&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">:</span>
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;一般难度&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">:</span>
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;困难难度&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">break</span>;
+        <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
+               <span style="color:#66d9ef">break</span>;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+        <span style="color:#75715e">//2.if语句
+</span><span style="color:#75715e"></span>          
+        <span style="color:#66d9ef">for</span>( <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; i<span style="color:#f92672">++</span>)
+        {
+               cout<span style="color:#f92672">&lt;&lt;</span>i;
+               <span style="color:#66d9ef">if</span>(i <span style="color:#f92672">==</span> <span style="color:#ae81ff">4</span>)
+               {
+                       <span style="color:#66d9ef">break</span>;
+               }
+        }
+         
+        <span style="color:#75715e">//3.嵌套语句：通过break结束外层循环。
+</span><span style="color:#75715e"></span>}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这是 break 的用法，break 用在循环体中，用于跳出某个循环，或则跳出外层循环，值得注意的是 break 是直接打破循环并且并不会执行剩余的代码。</p>
+<h4 id="38-continue语句">3.8 continue语句</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：在循环语句中，跳过本次循环中余下尚未执行的语句，继续执行下一次循环</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define length 100
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//continue作用:在一个循环语句中，跳过本次循环中余下尚未执行的语句，继续执行下一次循环；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//continue：执行到本行，下面语句不在执行，执行下一次循环
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//输出100内的所有偶数；
+</span><span style="color:#75715e"></span>          
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+                 
+               <span style="color:#66d9ef">if</span> ( i <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+               {       
+                       cout <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> endl;
+                       <span style="color:#66d9ef">continue</span>;
+               }
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：<code>continue</code> 语句最大的不同是它是跳出本次循环，并不会影响剩下代码的执行，强调的是跳出循环执行下一次循环，这是与<code> break</code> 最大的不同之处。</p>
+<h4 id="39--选择结构案例">3.9  选择结构案例</h4>
+<ul>
+<li>
+<p><strong>案例</strong>：  原案例：五只小猪称体重，选出最重的，解题思路：创建一个数组容纳五只小猪的体重信息，第一步，假设我们选一头猪，我们认为他就是最重的，然后称重（这里程序里面就是比较运算符的使用），选出重的一头，在比 ，在选出最重的，最后找到最重的。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define MAX 5
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//案例：5只小猪称体重,取出最重的；
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> data[<span style="color:#ae81ff">5</span>];
+        <span style="color:#66d9ef">int</span> i,j,k,m;
+        <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX ; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入第&#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;小猪的重量&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               cin <span style="color:#f92672">&gt;&gt;</span> data[i];
+        }
+        <span style="color:#66d9ef">for</span> ( m <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; m <span style="color:#f92672">&lt;</span> MAX <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; m<span style="color:#f92672">++</span>)
+        {
+               <span style="color:#66d9ef">int</span> min <span style="color:#f92672">=</span> data[m];
+               <span style="color:#66d9ef">for</span> (j <span style="color:#f92672">=</span> m <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> MAX; j<span style="color:#f92672">++</span>)
+               {
+                       <span style="color:#66d9ef">if</span> (min <span style="color:#f92672">&lt;</span> data[j])
+                       {
+                              min <span style="color:#f92672">=</span> data[j];
+                              swap(data[j], data[m]);
+                       }
+               }
+        }
+          
+        <span style="color:#66d9ef">for</span> (k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> MAX ; k<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> data[k] <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+          
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：原案例：五只小猪称体重，选出最重的，解题思路：创建一个数组容纳五只小猪的体重信息，第一步，假设我们选一头猪，我们认为他就是最重的，然后称重（这里程序里面就是比较运算符的使用），选出重的一头，在比 ，在选出最重的，最后找到最重的。<strong>所以 int max = data[0]，for（int i=1；i&lt;5 ；i++）{ if (data[i] &gt; max) { }}这里太简单了</strong>，我们改<strong>案例：五只小猪称体重，按降序排列。</strong></p>
+<h3 id="4-数组的定义和使用">4 数组的定义和使用</h3>
+<hr>
+<h4 id="41-概述">4.1 概述</h4>
+<p>所谓数组，就是一个集合，里面存放了相同类型的数据元素</p>
+<p><strong>特点1</strong>：数组中的每个元素都是相同的数据类型</p>
+<p><strong>特点2</strong>：数组是由连续的内存位置组成的</p>
+<h4 id="42-数组的定义">4.2 数组的定义</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：一维数组名称的用途</p>
+</li>
+<li>
+<p>1.统计整个数组在内存中的长度</p>
+</li>
+<li>
+<p>2.可以获取数组在内存中的首地址</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//数组的定义
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//数组类型 数组名 数组长度
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> sorce[<span style="color:#ae81ff">5</span>];  <span style="color:#75715e">//数组的定义
+</span><span style="color:#75715e"></span>          
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：了解数组的定义格式：数组类型(such int) 数组名 数组长度(such [10] 代表长度为10)。</p>
+<h4 id="43-循环找出最大数">4.3 循环找出最大数</h4>
+<ul>
+<li>
+<p><strong>案例</strong>：</p>
+<p>自己输入数组，找出数组中的最大数并输出显示出来。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{       
+        <span style="color:#75715e">//创建一个数组，找出其中的最大值
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score[<span style="color:#ae81ff">5</span>];
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输出数组中的元素&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; i<span style="color:#f92672">++</span>)
+        {
+                 
+               cin <span style="color:#f92672">&gt;&gt;</span> score[i];
+        }
+        <span style="color:#66d9ef">int</span> MAX <span style="color:#f92672">=</span> score[<span style="color:#ae81ff">0</span>];    <span style="color:#75715e">//假设数组中的第一个值最大
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">5</span>; i<span style="color:#f92672">++</span>)   <span style="color:#75715e">//循环语句，每次将最大值跟数组的后一位比较
+</span><span style="color:#75715e"></span>        {
+               <span style="color:#66d9ef">if</span> (score[i] <span style="color:#f92672">&gt;</span> MAX)    <span style="color:#75715e">//假设后面有更大的，重新赋值MAX的值
+</span><span style="color:#75715e"></span>               {
+                       MAX <span style="color:#f92672">=</span> score[i];
+               }
+        }
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;数组中的最大值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> MAX <span style="color:#f92672">&lt;&lt;</span> endl;  <span style="color:#75715e">//输出数组中的最大值
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：了解循环语句以及 if 条件语句的使用。</p>
+<h4 id="44-元素逆置">4.4 元素逆置</h4>
+<ul>
+<li>
+<p><strong>案例</strong>：</p>
+<p>自己输入数组，将数组中的元素首尾互换。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define MAX 10
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{       
+        <span style="color:#75715e">//数组元素的逆置
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.定义数组的首部和尾部  定义数组: int arr[5]
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//int start = 0 ; int end = sizeof(arr)/sizeof(arr[start]);
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> arr[MAX];
+        <span style="color:#66d9ef">int</span> start <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">//起始元素下标的位置
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> end <span style="color:#f92672">=</span> <span style="color:#66d9ef">sizeof</span>(arr) <span style="color:#f92672">/</span> <span style="color:#66d9ef">sizeof</span>(arr[start]) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;      <span style="color:#75715e">//末尾元素下标的位置
+</span><span style="color:#75715e"></span>          
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输出数组中的元素&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {
+                 
+               cin <span style="color:#f92672">&gt;&gt;</span> arr[i];
+        }
+        <span style="color:#66d9ef">for</span> ( start; start <span style="color:#f92672">&lt;</span> end; start<span style="color:#f92672">++</span>)        <span style="color:#75715e">//这段为重点理解地方
+</span><span style="color:#75715e"></span>        {
+               swap(arr[start], arr[end]);
+               end<span style="color:#f92672">--</span>;
+        }
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> arr[i] <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：首先定义数组的开始 start 以及 end 因为不知道数组有多长，所以我们应该算出数组的长度再来求出 end ，利用之前所学的 <code>sizeof (arr) / sizeof ( arr[start] )</code> 就得出了数组得长度，那么数组最后一位得下标为 <code>sizeof (arr) / sizeof ( arr[start] ) - 1</code>，通过循环将数组首尾互换。</p>
+<h4 id="45-二维数组">4.5 二维数组</h4>
+<ul>
+<li>
+<p><strong>解释</strong>：二维数组就是在一维数组的基础上多加一个维度</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define h_length 2            </span><span style="color:#75715e">//宏定义数组的行数
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define l_length 3            </span><span style="color:#75715e">//宏定义数组的列数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//二维数组的作用：在一维数组的基础上加一个维度
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//二维数组的定义方式
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//数据类型 数组名[行数][列数]
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//int data[2][3];
+</span><span style="color:#75715e"></span>          
+        <span style="color:#66d9ef">int</span> data[h_length][l_length];         <span style="color:#75715e">//定义数组
+</span><span style="color:#75715e"></span>          
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;输入数组中的元素:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> h_length; i<span style="color:#f92672">++</span>)           <span style="color:#75715e">//用嵌套玄循环结构实现数组的输入
+</span><span style="color:#75715e"></span>        {
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> l_length; j<span style="color:#f92672">++</span>)
+               {
+                         
+                       cin <span style="color:#f92672">&gt;&gt;</span> data[i][j];            <span style="color:#75715e">//输入数组的值
+</span><span style="color:#75715e"></span>               }
+        }
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> h_length; i<span style="color:#f92672">++</span>)           <span style="color:#75715e">//打印数组中的元素
+</span><span style="color:#75715e"></span>        {
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> l_length; j<span style="color:#f92672">++</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> data[i][j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+                 
+               }
+               cout <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这里是用循环实现输入以及最后的输出，学以致用。</p>
+<h4 id="46-冒泡排序">4.6 冒泡排序</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：最常用的排序算法，对数组内的元素进行排序</p>
+<p>1.比较相邻的元素，如果第一个比第二个大，就交换他们两个</p>
+<p>2.对每一对相邻元素做同样的工作，执行完毕后，找到第一个最大值</p>
+<p>3.重复以上的操作，每次比较次数 -1 ，知道不需要比较</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define MAX 6          </span><span style="color:#75715e">//宏定义MAX 的值为6  本程序中代表数组的元素 以防以后程序的修改
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//冒泡排序：将数组中的数据升序排列
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.比较相邻的元素，交换大的
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.对每个相邻元素做同样的工作，执行完毕后，找到第一个最大的值
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.重复以上的操作，每次比较次数+1，直到不需要比较
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score[MAX];        <span style="color:#75715e">//定义一个数组
+</span><span style="color:#75715e"></span>          
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输出数组中的元素&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {
+                 
+               cin <span style="color:#f92672">&gt;&gt;</span> score[i];
+        }
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">++</span>)     <span style="color:#75715e">//循环查找最大数
+</span><span style="color:#75715e"></span>        {
+               <span style="color:#66d9ef">int</span> max <span style="color:#f92672">=</span> score[i];    <span style="color:#75715e">//定义最大值
+</span><span style="color:#75715e"></span>               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> MAX; j<span style="color:#f92672">++</span>)
+               {
+                       <span style="color:#66d9ef">if</span> (score[j] <span style="color:#f92672">&gt;</span> max)           <span style="color:#75715e">//如果后面的元素比前面的大
+</span><span style="color:#75715e"></span>                       {
+                              max <span style="color:#f92672">=</span> score[j];
+                              swap(score[i], score[j]);             <span style="color:#75715e">//交换数组中两个元素的值
+</span><span style="color:#75715e"></span>                       }
+               }
+        }
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)         <span style="color:#75715e">//打印输出数组
+</span><span style="color:#75715e"></span>        {
+               cout <span style="color:#f92672">&lt;&lt;</span> score[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<h4 id="47-案例设计-考试成绩系统">4.7 案例设计-考试成绩系统</h4>
+<ul>
+<li>
+<p><strong>案例</strong>：</p>
+<p>考试成绩统计：有三名同学在一个考试系统中的成绩分别如下，请分别输出三名同学的总成绩</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>语文</th>
+<th>数学</th>
+<th>英语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>100</td>
+<td>100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>90</td>
+<td>50</td>
+<td>100</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>60</td>
+<td>70</td>
+<td>80</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define MAX 3          </span><span style="color:#75715e">//定义所创建结构体的数量  即学生数量
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define cont 3         </span><span style="color:#75715e">//定义课程数量
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Input</span>();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Output_Score_Name</span>();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Output_Name</span>();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Sum_Display</span>();
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>         <span style="color:#75715e">//定义结构体变量
+</span><span style="color:#75715e"></span>{
+        string name;           <span style="color:#75715e">//名字
+</span><span style="color:#75715e"></span>        string score_name[cont];              <span style="color:#75715e">//课程名称
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score_data[cont];         <span style="color:#75715e">//课程分数
+</span><span style="color:#75715e"></span>};
+Student student[MAX];
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Input</span>()           <span style="color:#75715e">//输入函数，输入学生的信息
+</span><span style="color:#75715e"></span>{
+          
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入同学姓名:&#34;</span>;
+               cin <span style="color:#f92672">&gt;&gt;</span> student[i].name;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; j<span style="color:#f92672">++</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入科目信息：&#34;</span>;
+                       cin <span style="color:#f92672">&gt;&gt;</span> student[i].score_name[j];
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入成绩信息：&#34;</span>;
+                       cin <span style="color:#f92672">&gt;&gt;</span> student[i].score_data[j];
+               }
+        }
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Output_Score_Name</span>()              <span style="color:#75715e">//打印课程名称
+</span><span style="color:#75715e"></span>{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;         &#34;</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; j<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> student[<span style="color:#ae81ff">0</span>].score_name[j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;    &#34;</span>;
+        }
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Output_Name</span>()            <span style="color:#75715e">//打印名字 格式为第一行 以及分数信息
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> student[i].name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;    &#34;</span>;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; j<span style="color:#f92672">++</span>)
+               {
+                         
+                       cout <span style="color:#f92672">&lt;&lt;</span> student[i].score_data[j] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;      &#34;</span>;
+               }
+               cout <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Sum_Display</span>()            <span style="color:#75715e">//打印总分的情况
+</span><span style="color:#75715e"></span>{       
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> MAX; i<span style="color:#f92672">++</span>)
+        {       
+               <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">3</span>; j<span style="color:#f92672">++</span>)
+               {
+                       sum <span style="color:#f92672">+=</span> student[i].score_data[j];
+               }
+               cout <span style="color:#f92672">&lt;&lt;</span> student[i].name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;的总分为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> sum <span style="color:#f92672">&lt;&lt;</span> endl;
+               sum <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+        }
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//案例设计
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//三名同学的成绩如下 ，输出同学的总成绩，总分
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//创建结构体
+</span><span style="color:#75715e"></span>        Input();               <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        Output_Score_Name();          <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        Output_Name();         <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        Sum_Display();         <span style="color:#75715e">//
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<h3 id="5-函数">5 函数</h3>
+<hr>
+<h4 id="51-概述">5.1 概述</h4>
+<ul>
+<li><strong>作用</strong>：将一段经常使用的代码封装起来，减少重复代码</li>
+</ul>
+<p>一个较大的程序，一般分为若干个程序块，每个模块实现特定的功能。</p>
+<h4 id="52-函数的定义">5.2 函数的定义</h4>
+<p>函数的定义一般主要有 5 个步骤：</p>
+<p>1.返回值类型</p>
+<p>2.函数名</p>
+<p>3.参数列表</p>
+<p>4.函数体语句</p>
+<p>5.<code>return</code> 表达式</p>
+<p><strong>语法</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#960050;background-color:#1e0010">返回值类型</span> <span style="color:#960050;background-color:#1e0010">函数名</span> (<span style="color:#960050;background-color:#1e0010">参数列表</span>)
+{
+    <span style="color:#960050;background-color:#1e0010">函数体语句</span>
+        
+    return表达式
+}
+</code></pre></div><ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>();
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">add</span>(<span style="color:#66d9ef">int</span> num1,<span style="color:#66d9ef">int</span> num2)
+{
+        <span style="color:#66d9ef">int</span> sum <span style="color:#f92672">=</span> num1 <span style="color:#f92672">+</span> num2;
+        <span style="color:#66d9ef">return</span> sum;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//函数的定义的基本步骤
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.返回值类型
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.函数名
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.参数列表
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//4.函数体语句
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//5.return 表达式
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a, b;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;输入两个数据:&#34;</span> ;
+        cin <span style="color:#f92672">&gt;&gt;</span> a;
+        cin <span style="color:#f92672">&gt;&gt;</span> b;
+          
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;两数和为：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> add(a, b) <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：简单的函数定义，<code>add ( )＋</code>函数的定义，这里涉及到形参以及实参的运用，函数体中<code> num，num1</code>是形式参数，没有值，这里做的操作是将实参赋值给形参。</p>
+<h4 id="53-函数的常见形式">5.3 函数的常见形式</h4>
+<ul>
+<li>
+<p><strong>常见的函数样式有4 种</strong>：</p>
+<p>1.无参无返</p>
+<p>2.有参有返</p>
+<p>3.无参有返</p>
+<p>4.有参有返</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#75715e">//1.无参无返
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Output</span>()
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输出一个数:&#34;</span>;
+}
+<span style="color:#75715e">//2.有参无返
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Test</span>(<span style="color:#66d9ef">int</span> a)
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;这个数为;&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#75715e">//3.无参有返
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Test_2</span>()
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;This is test_2&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">100</span>;
+}
+<span style="color:#75715e">//4.有参有返
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Add</span>(<span style="color:#66d9ef">int</span> num1,<span style="color:#66d9ef">int</span> num2)
+{
+        <span style="color:#66d9ef">return</span> num1 <span style="color:#f92672">+</span> num2;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//函数的常见形式
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//形式：1.有参有返回 2.有参无返回 3.无参有返回 4.无参无返回
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：函数的常见形式：1.有参有返回 2.有参无返回 3.无参有返回 4.无参无返回。</p>
+<h4 id="54-函数的调用">5.4 函数的调用</h4>
+<ul>
+<li>
+<p><strong>功能</strong>：使用定义好的函数</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>函数名（参数）</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//函数的定义
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//步骤：1.定义函数 2.再main（）函数里调用函数 3.实参到形参的传递
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+          
+}
+</code></pre></div></li>
+</ul>
+<h4 id="55-分文件的编写">5.5 分文件的编写</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：让代码结构更加清晰</p>
+<p>函数的分文件编写一般有4个步骤：</p>
+<p>1.创建后缀名为 <code>. h</code> 的头文件</p>
+<p>2.创建后缀名为 <code>. cpp</code> 的源文件</p>
+<p>3.在头文件中写函数的声明</p>
+<p>4.在源文件中写函数的定义</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//函数的分文件的编写
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.创建后缀名为.h的头文件
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.创建后缀名为.cpp的源文件
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.再头文件中写函数的声明
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//4.再源文件中写函数的定义以及功能
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//功能：让代码结构更清晰
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：主要是 .h文件书写，看可以将主程序中函数的定义，全局变量的定义放在 .h 文件中，让代码的结构更清晰。</p>
+<h3 id="6-指针">6 指针</h3>
+<hr>
+<h4 id="61-指针的基本概念">6.1 指针的基本概念</h4>
+<p><strong>指针的作用</strong>：可以通过指针间接访问内存</p>
+<ul>
+<li>内存编号是从0开始记录的，一般用十六进制数字表示</li>
+<li>可以利用指针变量保存地址</li>
+</ul>
+<h4 id="62-指针变量的定义和使用">6.2 指针变量的定义和使用</h4>
+<ul>
+<li>
+<p><strong>语法</strong>：<code>数据类型 * 变量名；</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//指针的作用：利用指针间接访问内存
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//指针就是一个地址
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#75715e">//1.指针的定义 ： 数据类型 *指针变量名
+</span><span style="color:#75715e"></span>          
+        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p;               <span style="color:#75715e">//指针也是一个变量，代表是地址
+</span><span style="color:#75715e"></span>        p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;                <span style="color:#75715e">//指针记录a的地址
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.指针的使用:指针前加一个*，代表解引用，找到内存中的数据
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;指针p:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：指针的主要作用是访问内存中的地址，<code>int * p = &amp;a；</code>其中 &amp;符号为取地址，即 p 存储的是 a变量的地址，而不是值，* p 取得是地址中存放得数据。</p>
+<h4 id="63-指针所占的内存空间">6.3 指针所占的内存空间</h4>
+<ul>
+<li>
+<p><strong>提问</strong>：指针也是一种数据类型，那么指针所占的内存空间为多少？</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//指针所占的内存空间
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//32位操作系统下，指针都是占4个字节的空间
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//64位操作系统下，指针都是占8个字节空间
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;sizeof (int *) = &#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(p) <span style="color:#f92672">&lt;&lt;</span> endl;
+          
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p><strong>总结</strong>：默认32位操作系统，指针都是占4个字节；64位操作系统，指针都是占8个字节。</p>
+</li>
+</ul>
+<h4 id="64-空指针">6.4 空指针</h4>
+<ul>
+<li>
+<p><strong>空指针</strong>：指针变量指向内存中编号为0的空间</p>
+</li>
+<li>
+<p><strong>用途</strong>：初始化指针变量</p>
+</li>
+<li>
+<p><strong>注意</strong>：空指针指向的内存是不可以访问的</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//空指针:指针变量指向内存中编号为0的空间
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//用途：初始化指针变量
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//注意：空指针指向的内存是不可以访问的
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//空指针
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.用于给指针变量的初始化
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> NULL;
+        <span style="color:#75715e">//2.空指针是不可以访问的
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//0~255之间的内存编号是系统占用的，因此不可以访问
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;             <span style="color:#75715e">//此操作是错误的，不允许的
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<h4 id="65-野指针">6.5 野指针</h4>
+<p><strong>定义</strong>：指针变量指向非法的内存空间</p>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//野指针：指针变量指向非法得到内存空间
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//总结：空指针和野指针都不是我们申请的空间，因此不要访问
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<h4 id="66-const-修饰指针">6.6 <code>const</code> 修饰指针</h4>
+<ul>
+<li>
+<p><strong><code>const</code>修饰指针的三种情况：</strong></p>
+<p>1.<code>const</code>修饰指针 &mdash; 常量指针</p>
+<p>2.<code>const</code>修饰常量 &mdash; 指针常量</p>
+<p>3.<code>const</code>即修饰指针，又修饰常量</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//const修饰指针的三种情况：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.const修饰指针：---常量指针
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;           <span style="color:#75715e">//const修饰指针特点:指针指向可以修改，指针指向的值不可以修改。
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//*p = 20;             //直接错误，因为指针指向的内存空间的值不能修改
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//p = &amp;b;              //正确，指针的指向可以修改
+</span><span style="color:#75715e"></span>          
+        <span style="color:#75715e">//2.const修饰常量：---指针常量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;                   <span style="color:#75715e">//const修饰常量指针：指针的指向不可以改，指针指向的值可以修改。
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//*p = 20;             //正确，因为指针指向的内存空间的值可以修改
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//p = &amp;b;                     //错误,指针的指向不能更改
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.const即修饰指针，又修饰常量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">const</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>a;             <span style="color:#75715e">//const即修饰指针又修饰常量：指针的指向和指向的值都不能需修改
+</span><span style="color:#75715e"></span>          
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：<code>const </code>修饰指针时&ndash;指针常量，<code>const</code> 修饰常量时&ndash;常量指针，区别 <code>const int *p = &amp;a</code>，<code>const</code>在指针前面，则为常量指针，此时指针得指向可以更改但是指针指向得值不可以更改；<code>int const *p = &amp;a</code>，<code>const</code>在常量得前面，则为指针常量，此时指针得指向不可以修改但是指针指向得值可以更改。</p>
+<h4 id="67-指针和数组">6.7 指针和数组</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：利用指针访问数组中的元素</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define length 10
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//利用指针遍历数组中的元素
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> arr[length];
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入数组中的元素:&#34;</span>;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {       
+               cin <span style="color:#f92672">&gt;&gt;</span> arr[i];
+        }
+        <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> arr;         <span style="color:#75715e">//定义指针p指向数组的第一个元素，*p代表的是地址的值 p代表的是数组第一个元素在内存中的地址
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;数组中的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>p <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;   &#34;</span>;          <span style="color:#75715e">//总结：p的值为地址，*p为p指向的地址中代表的值
+</span><span style="color:#75715e"></span>               p<span style="color:#f92672">++</span>;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：p 得值为地址，<code>int * p = arr</code>， 就是取 arr 数组中第一个元素所在得地址，占用4个字节，* p 为 p指向地址中存放得值，其中得 p++代表得是地址向右移动(+1代表向右移动4个字节)来对应数组中得第几位元素。</p>
+<h4 id="68-指针和函数">6.8 指针和函数</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：利用指针作为函数参数，可以修改实参的值</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p1,<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> p2)          <span style="color:#75715e">//这里形参可以改变实际参数
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>p1;
+        <span style="color:#f92672">*</span>p1 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>p2;
+        <span style="color:#f92672">*</span>p2 <span style="color:#f92672">=</span> temp;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//地址传递
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        <span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>;
+        swap(<span style="color:#f92672">&amp;</span>a, <span style="color:#f92672">&amp;</span>b);          <span style="color:#75715e">//这里传入的是a，b地址的引用 &amp;为取地址and符号
+</span><span style="color:#75715e"></span>        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;交换之后a的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> a <span style="color:#f92672">&lt;&lt;</span> endl;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;交换之后b的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> b <span style="color:#f92672">&lt;&lt;</span> endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：这里主要讲的函数中指针的使用，不同的是这里的形参可以改变实参的值，通过指针可以直接更改指针指向地址里的值.。</p>
+<h4 id="69--指针函数">6.9  指针函数</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：用于特殊的场景</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GetData</span>(<span style="color:#66d9ef">int</span> wk, <span style="color:#66d9ef">int</span> dy);         <span style="color:#75715e">//定义指针函数：返回值为数据的地址，而不是值，通过 *  才访问地址中的值
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">GetData</span>(<span style="color:#66d9ef">int</span> wk, <span style="color:#66d9ef">int</span> dy)
+{
+        <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> Calendar[<span style="color:#ae81ff">5</span>][<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span>
+        {
+               {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>},
+            {<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">11</span>,<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">13</span>,<span style="color:#ae81ff">14</span>},
+               {<span style="color:#ae81ff">15</span>,<span style="color:#ae81ff">16</span>,<span style="color:#ae81ff">17</span>,<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">19</span>,<span style="color:#ae81ff">20</span>,<span style="color:#ae81ff">21</span>},
+               {<span style="color:#ae81ff">22</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">24</span>,<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">26</span>,<span style="color:#ae81ff">27</span>,<span style="color:#ae81ff">28</span>},
+               {<span style="color:#ae81ff">29</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">31</span>,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}
+        };
+        <span style="color:#66d9ef">return</span> <span style="color:#f92672">&amp;</span>Calendar[wk <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>][dy <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];            <span style="color:#75715e">//返回的是数组元素的地址
+</span><span style="color:#75715e"></span>}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//指针函数：
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> wk, dy;
+        <span style="color:#66d9ef">do</span>
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Enter week(1-5) day(1-7)&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               cin <span style="color:#f92672">&gt;&gt;</span> wk <span style="color:#f92672">&gt;&gt;</span> dy;
+        } <span style="color:#66d9ef">while</span> (wk <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> wk<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">||</span> dy <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> dy<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">7</span>);
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;返回的值为:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#f92672">*</span>GetData(wk, dy) <span style="color:#f92672">&lt;&lt;</span> endl;          <span style="color:#75715e">//调用指针函数，返回数组中的值
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：指针函数的本质就是个函数，函数的返回值为元素的地址，而不是直接的值，在通过 * 来取得数组中的值，文中将 * 去掉，将&amp;符号去掉也能达到相同的效果，***** 为取指针目标运算符。</p>
+<h4 id="610-函数">6.10 函数</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：指向函数入口地址的指针</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">void</span>(<span style="color:#f92672">*</span>Point)();        <span style="color:#75715e">//定义的一个指针函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">FileFunc</span>(), EditFunc();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">FileFunc</span>()
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;这是 FileFunc 函数&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">EditFunc</span>()
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;这是 EditFunc 函数&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//函数指针的定义
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//格式：类型说明符 (*函数名)（参数）
+</span><span style="color:#75715e"></span>        Point <span style="color:#f92672">=</span> FileFunc;             
+        (<span style="color:#f92672">*</span>Point)();
+        Point <span style="color:#f92672">=</span> EditFunc;
+        (<span style="color:#f92672">*</span>Point)();
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+          
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：很关键的一个点，函数指针指向的是函数的入口地址，那么自然可以用指针来访问。</p>
+<h4 id="611-案例设计-指针配合函数和数组">6.11 案例设计-指针配合函数和数组</h4>
+<p><strong>指向数组的指针的特点：</strong></p>
+<p>1.<code>arr + i</code>，指向数组中的第 i 号元素，即第 i 号元素的地址，即指向 <code>arr [ i ] </code>，当然下标 - 1。</p>
+<p>2.<code>( arr + i )</code>表示的是所指向元素的值，即就是 <code>arr [ i ]</code> 的值，*为取指针指向目标运算符。</p>
+<p>3.指向元素的指针可以表示成为数组的形式，就是说，他能带下标，即<code> Earr [ i ] = arr [ i ]</code>。</p>
+<p>4.总的来说，指向数组的指针，能当作数组来使用。</p>
+<ul>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#75715e">#define MAX 10
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BubbleSort</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> Bdata, <span style="color:#66d9ef">int</span> length);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintArray</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>Parr, <span style="color:#66d9ef">int</span> length);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">EnterArray</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>Edata, <span style="color:#66d9ef">int</span> length);
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BubbleSort</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> Bdata, <span style="color:#66d9ef">int</span> length)             <span style="color:#75715e">//冒泡排序函数：传入的参数为数组，数组长度
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">++</span>)
+        {       
+                 
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;</span> length; j<span style="color:#f92672">++</span>)
+               {
+                       <span style="color:#66d9ef">if</span> (Bdata[j] <span style="color:#f92672">&lt;</span> Bdata[i])
+                       {
+                              swap(Bdata[j], Bdata[i]);
+                       }
+               }
+        }
+          
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintArray</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> Parr, <span style="color:#66d9ef">int</span> length)              <span style="color:#75715e">//打印函数：传入的参数为数组，数组长度
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length ; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> Parr[i] <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; &#34;</span>;
+        }
+        cout <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">EnterArray</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> Earr ,<span style="color:#66d9ef">int</span> length)              <span style="color:#75715e">//输入数组中的元素：传入的参数为数组，数组长度
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cin <span style="color:#f92672">&gt;&gt;</span> Earr[i];
+        }
+          
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//案例描述：封装一个函数，利用冒泡排序，实现对数组的升序排列
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.先创建一个数组 输入数组
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> arr[MAX];
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入数组中的元素：&#34;</span>;
+        EnterArray(arr, MAX);
+        <span style="color:#75715e">//2.创建一个冒泡排序函数
+</span><span style="color:#75715e"></span>        BubbleSort(arr, MAX);
+        <span style="color:#75715e">//3.打印排序后的数组
+</span><span style="color:#75715e"></span>        PrintArray(arr, MAX);
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：arr 代表的是数组中的首地址，函数中定义的指针常量<code>Earr，Barr，Parr</code>都是形参，arr 传入的是首地址，函数接收的是首地址和数组长度，在语法中<code> Earr = arr</code>，则<code> * Earr</code>代表的是数组中第一个元素的值，这里可以用 <code>Earr [ i ]</code>来表示数组中的元素。</p>
+<h3 id="7-结构体">7 结构体</h3>
+<hr>
+<h4 id="71-结构体基本概念">7.1 结构体基本概念</h4>
+<p>结构体属于用户自定义的数据类型，允许用户存储下不同的数据类型</p>
+<h4 id="72-结构体的定义和使用">7.2 结构体的定义和使用</h4>
+<ul>
+<li>
+<p><strong>语法</strong>：<code>struct 结构体名 {结构体成员列表}；</code></p>
+<p>通过结构体创建变量的方式有三种：</p>
+<ul>
+<li><code>struct 结构体名 变量名</code></li>
+<li><code>struct 结构体名 变量名 =  {成员1值，成员2值...}</code></li>
+<li>定义结构体时顺便创建变量</li>
+</ul>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#75715e">//1.创建学生数据类型：学生包括（姓名，年龄，分数）；
+</span><span style="color:#75715e">//自定义数据类型
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//成员变量
+</span><span style="color:#75715e"></span>        string name;           <span style="color:#75715e">//姓名
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> age;               <span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score;             <span style="color:#75715e">//分数
+</span><span style="color:#75715e"></span>};
+<span style="color:#75715e">//通过学生类型创建具体学生
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+        <span style="color:#75715e">//结构体的定义语法：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//struct 结构体名 { 结构体成员列表 }；
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.struct 结构体名 变量名
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.struct 结构体名 变量名 = {成员1值，成员2值......}
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//3.定义结构体时顺便创建变量
+</span><span style="color:#75715e"></span>          
+        <span style="color:#75715e">//1.struct Student s1
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//给s1属性赋值，通过.访问结构体中的变量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span> s1;
+        s1.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+        s1.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;张三&#34;</span>;
+        s1.score <span style="color:#f92672">=</span> <span style="color:#ae81ff">90</span>;
+          
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;年龄:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;分数:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.score <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//2.struct Student s2 = {...}
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//在定义结构体时顺便创建结构体变量
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">struct</span>  <span style="color:#a6e22e">Student</span> s2 <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;李四&#34;</span>,<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">80</span> };
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;年龄:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;分数:&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s1.score <span style="color:#f92672">&lt;&lt;</span> endl;
+        <span style="color:#75715e">//3.在定义结构体的时候顺便创建结构体变量
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：了解结构体的定义以及结构体变量的使用，重点是结构体变量的创建可以不加<code> struct</code> ，而在定义结构体类型时要带 <code>struct</code> ,推荐使用第一，第二种结构体变量的创建，结构体变流量的访问都用 . 访问。</p>
+<h4 id="73-结构体数组">7.3 结构体数组</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：将自定义的结构体放入到数组中方便维护</p>
+</li>
+<li>
+<p><strong>语法</strong>：<code>struct 结构体名 数组名[元素个数] = {{},{},{}}</code></p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define length 3
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#75715e">//结构体定义
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//成员列表
+</span><span style="color:#75715e"></span>        string name;           <span style="color:#75715e">//姓名
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> age;                   <span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score;                    <span style="color:#75715e">//分数
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        <span style="color:#75715e">//创建结构体数组
+</span><span style="color:#75715e"></span>        Student stuArray[<span style="color:#ae81ff">3</span>];               <span style="color:#75715e">//这里存放三个学生的信息
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//for循环实现数据的输入
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入第 &#34;</span> <span style="color:#f92672">&lt;&lt;</span> i <span style="color:#f92672">+</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 个同学的姓名、年龄、分数：&#34;</span>;
+               cin <span style="color:#f92672">&gt;&gt;</span> arr[i].name <span style="color:#f92672">&gt;&gt;</span> arr[i].age <span style="color:#f92672">&gt;&gt;</span> arr[i].score;
+        }
+          
+        <span style="color:#75715e">//for循环实现数组的遍历
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 姓名： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stuArray[i].name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> stuArray[i].age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数： &#34;</span>  <span style="color:#f92672">&lt;&lt;</span> stuArray[i].score <span style="color:#f92672">&lt;&lt;</span> endl;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：首先定义结构体，在创建一个结构体数组，创建结构体变量时可以不用加 <code>struct</code> ，总的来说跟数组的输出差不多，就多了一个 . 访问数组中的元素。</p>
+<h4 id="74-结构体指针">7.4 结构体指针</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：通过指针访问结构体中的成员</p>
+</li>
+<li>
+<p><strong>利用操作符</strong>： <code>-&gt; </code>可以通过结构体指针访问结构体属性</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//成员列表
+</span><span style="color:#75715e"></span>        string name;
+        <span style="color:#66d9ef">int</span> age;
+        <span style="color:#66d9ef">int</span> score;
+};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        <span style="color:#75715e">//结构体指针的作用：通过指针访问结构体中的成员
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//利用操作符 -&gt; 可以通过结构体指针访问结构体属性
+</span><span style="color:#75715e"></span>        Student stu <span style="color:#f92672">=</span> { <span style="color:#e6db74">&#34;张三&#34;</span>,<span style="color:#ae81ff">18</span>,<span style="color:#ae81ff">60</span> };
+        Student <span style="color:#f92672">*</span>p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>stu;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 姓名： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>score <span style="color:#f92672">&gt;&gt;</span>  endl;
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：结构体指针定义之后，需要使用 - &gt; 符号访问结构体属性。</p>
+<h4 id="75-结构体嵌套结构体">7.5 结构体嵌套结构体</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：结构体中的成员可以是另一个结构体</p>
+</li>
+<li>
+<p><strong>例如</strong>：每个老师辅导一个学员，一个老师打的结构体中，记录一个学生的结构体</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define length 3
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//Student 结构体成员列表
+</span><span style="color:#75715e"></span>        string name;           <span style="color:#75715e">//姓名
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> age;               <span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> score;             <span style="color:#75715e">//分数
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Teacher</span>
+{
+        <span style="color:#75715e">//Teacher 结构成员列表
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> id;        <span style="color:#75715e">//职工号
+</span><span style="color:#75715e"></span>        string name;           <span style="color:#75715e">//姓名
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> age;               <span style="color:#75715e">//年龄
+</span><span style="color:#75715e"></span>        Student stu;           <span style="color:#75715e">//字结构体 学生
+</span><span style="color:#75715e"></span>};
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+                 
+        <span style="color:#75715e">//结构体嵌套结构体作用：结构体中的成员可以是另一个结构体
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//例如：每个老师辅导一个学员，一个老师的结构体中，记录一个学生的结构体
+</span><span style="color:#75715e"></span>        Teacher TeacherArray[length];
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入老师的信息以及学生的信息，职工号、姓名、年龄、学生姓名、年龄、分数的形式：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               cin <span style="color:#f92672">&gt;&gt;</span> TeacherArray[i].id <span style="color:#f92672">&gt;&gt;</span> TeacherArray[i].name <span style="color:#f92672">&gt;&gt;</span> TeacherArray[i].age <span style="color:#f92672">&gt;&gt;</span>  TeacherArray[i].stu.name;
+               cin <span style="color:#f92672">&gt;&gt;</span> TeacherArray[i].stu.age <span style="color:#f92672">&gt;&gt;</span> TeacherArray[i].stu.score;
+        }
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;老师：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;职工号： &#34;</span> <span style="color:#f92672">&lt;&lt;</span> TeacherArray[i].id <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span>  TeacherArray[i].name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> TeacherArray[i].age;
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;学生：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> TeacherArray[i].stu.name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄：&#34;</span> <span style="color:#f92672">&lt;&lt;</span>  TeacherArray[i].stu.age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> TeacherArray[i].stu.score;
+        }
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+          
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：在定义 <code>Tearcher</code> 结构体类型的时候，因为里面还有 <code>Student</code> 结构体，这就导致必须在 <code>Tearcher</code> 结构体前面先定义 <code>Student </code>结构体，不然会出现报错的情况，在结构体中定义另一个结构体作为成员，用来解决实际问题。</p>
+<h4 id="76-结构体作为函数参数">7.6 结构体作为函数参数</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：将结构体作为参数向函数中传递</p>
+</li>
+<li>
+<p><strong>传递的方式</strong>：</p>
+<p>1.值传递</p>
+<p>2.地址传递</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>();
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu_Z</span>();
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//Student 成员列表
+</span><span style="color:#75715e"></span>        string name;
+        <span style="color:#66d9ef">int</span> age;
+        <span style="color:#66d9ef">int</span> score;
+};
+<span style="color:#75715e">//普通的值传递函数的定义
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>(Student s)
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s.name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s.age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> s.score <span style="color:#f92672">&lt;&lt;</span> endl;
+}
+<span style="color:#75715e">//特殊的地址传递函数的定义
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu_Z</span>(Student <span style="color:#f92672">*</span> p)
+{
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>score <span style="color:#f92672">&lt;&lt;</span>  endl;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        <span style="color:#75715e">//作用：结构体作为参数向函数中传递
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//传递方式：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//1.值传递
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//2.地址传递
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//创建一个结构体变量
+</span><span style="color:#75715e"></span>        Student S;
+        S.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+        S.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;张三&#34;</span>;
+        S.score <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>;
+          
+        <span style="color:#75715e">//1.值传递的输出
+</span><span style="color:#75715e"></span>        PrintStu(S);
+        <span style="color:#75715e">//2.地址传递的输出
+</span><span style="color:#75715e"></span>        PrintStu_Z(<span style="color:#f92672">&amp;</span>S);
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：通过值传递和地址传递两种方式传递，地址传递时，需要创建一个结构体指针来存储传入元素的地址，通过 <code>p -&gt; </code>来访问结构体中的属性，值传递中更改的结构体属性不会影响实参的结构体属性，但是在地址传递中更改的结构体属性会改变实参的结构体属性。</p>
+<h4 id="77-结构体中-const-的使用">7.7 结构体中 <code>const</code> 的使用</h4>
+<ul>
+<li>
+<p><strong>作用</strong>：利用 <code>const</code>来防止误操作</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>();
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//Student 成员列表
+</span><span style="color:#75715e"></span>        string name;
+        <span style="color:#66d9ef">int</span> age;
+        <span style="color:#66d9ef">int</span> score;
+};
+<span style="color:#75715e">//地址传递函数的打印输出
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>( <span style="color:#66d9ef">const</span> Student <span style="color:#f92672">*</span> p)            <span style="color:#75715e">//这里的指针为常量指针，指针指向的值不能更改
+</span><span style="color:#75715e"></span>{
+        p<span style="color:#f92672">-&gt;</span>age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+        cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 年龄：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>age <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> p<span style="color:#f92672">-&gt;</span>score <span style="color:#f92672">&lt;&lt;</span>  endl;
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        <span style="color:#75715e">//作用：用const来防止误操作
+</span><span style="color:#75715e"></span>        Student S;
+        S.name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;张三&#34;</span>;
+        S.age <span style="color:#f92672">=</span> <span style="color:#ae81ff">18</span>;
+        S.score <span style="color:#f92672">=</span> <span style="color:#ae81ff">60</span>;
+        PrintStu(<span style="color:#f92672">&amp;</span>S);
+        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：主要利用指针的类型来做相应的操作，常量指针和指针常量的理解，这里的 <code>p -&gt;age = 18</code> 会报错。</p>
+<p><img src="E:%5CMyC++-Database%5Cimage%5CImage_2.png" alt=""></p>
+<p>将函数中的形参改为指针，可以减少内存空间，而且不会复制新的副本出来，因为指针又会影响实参的属性，所以这里用 <code>const </code>来修饰以达到防止误操作的目的，同时又优化程序。</p>
+<h4 id="78-结构体案例设计">7.8 结构体案例设计</h4>
+<ul>
+<li>
+<p><strong>案例描述</strong>：</p>
+<p>案例一:学校在做毕业设计项目，每名老师带领5个学生，总共三名学生，需求如下：设计学生和老师的结构体，其中老师的结构体中，有老师姓名和一个存放5名学生的数组作为成员，学生的成员有姓名、考试分数、创建数组、存放3名老师   通过函数给每个老师及所带的学生赋值最终打印出老师数据以及老师所带学生的数据。</p>
+</li>
+<li>
+<p><strong>示例</strong>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C++" data-lang="C++"><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;iostream&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span><span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#define length_T 3            </span><span style="color:#75715e">//定义老师的人数
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define length_S 5            </span><span style="color:#75715e">//定义每个老师所带学生的人数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Input</span>();          <span style="color:#75715e">//输入函数的声明
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>();              <span style="color:#75715e">//输出函数的声明
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Student</span>
+{
+        <span style="color:#75715e">//Student 成员列表
+</span><span style="color:#75715e"></span>        string name;
+        <span style="color:#66d9ef">int</span> score;
+};
+<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Teacher</span>
+{
+        <span style="color:#75715e">//Teacher 成员列表
+</span><span style="color:#75715e"></span>        string name;
+        Student stu[<span style="color:#ae81ff">5</span>];
+};
+<span style="color:#75715e">//输入函数的实现
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Input</span>(Teacher <span style="color:#f92672">*</span> T)
+{       
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length_T; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入老师的姓名：&#34;</span>;
+               cin <span style="color:#f92672">&gt;&gt;</span> T[i].name;
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;请输入学生的信息，姓名、分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> length_S; j<span style="color:#f92672">++</span>)
+               {
+                       cin <span style="color:#f92672">&gt;&gt;</span> T[i].stu[j].name <span style="color:#f92672">&gt;&gt;</span> T[i].stu[j].score;
+               }
+        }
+}
+<span style="color:#75715e">//输出函数的实现
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PrintStu</span>(<span style="color:#66d9ef">const</span> Teacher <span style="color:#f92672">*</span> S)             <span style="color:#75715e">//这里的指针为常量指针，指针指向的值不能更改
+</span><span style="color:#75715e"></span>{
+        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> length_T; i<span style="color:#f92672">++</span>)
+        {
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;老师姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> S[i].name <span style="color:#f92672">&lt;&lt;</span> endl;
+               cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;该老师指导的学生信息为：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> endl;
+               <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> length_S; j<span style="color:#f92672">++</span>)
+               {
+                       cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">学生姓名：&#34;</span> <span style="color:#f92672">&lt;&lt;</span> S[i].stu[j].name <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34; 分数：&#34;</span> <span style="color:#f92672">&lt;&lt;</span>  S[i].stu[j].score <span style="color:#f92672">&lt;&lt;</span> endl;
+               }
+        }
+          
+          
+}
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>() {
+        <span style="color:#75715e">//案例一:学校在做毕业设计项目，每名老师带领5个学生，总共三名学生，需求如下：
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//设计学生和老师的结构体，其中老师的结构体中，有老师姓名和一个存放5名学生的数组作为成员，
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//学生的成员有姓名、考试分数、创建数组、存放3名老师
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">//通过函数给每个老师及所带的学生赋值最终打印出老师数据以及老师所带学生的数据。
+</span><span style="color:#75715e"></span>          
+        Teacher teach[length_T];
+          
+        Input(teach);          <span style="color:#75715e">//输入函数的调用
+</span><span style="color:#75715e"></span>        PrintStu(teach);              <span style="color:#75715e">//输出函数的调用
+</span><span style="color:#75715e"></span>        system(<span style="color:#e6db74">&#34;pause&#34;</span>);
+        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div></li>
+</ul>
+<p><strong>总结</strong>：基本实现用户的输入以及到最后的输出，案例较为简单，参数的传递建议使用指针，方便快捷。</p>
+</article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+  <div class="footer container-lg width-full p-responsive" role="contentinfo">
+    <div
+        class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+            <li class="mr-3 mr-lg-0"></a></li>
+        </ul>
+
+        <a aria-label="Homepage" title="My New Hugo Site" class="footer-octicon d-none d-lg-block mx-lg-4"
+            href="https://biejinxin.github.io/">
+            <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                </path>
+            </svg>
+        </a>
+        <ul
+            class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        </ul>
+    </div>
+    <div class="d-flex flex-justify-center pb-6">
+        <span class="f6 text-gray-light"></span>
+    </div>
+</div>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://biejinxin.github.io/js/frameworks.js"></script>
+
+<script crossorigin="anonymous"
+    type="application/javascript" src="https://biejinxin.github.io/js/github-bootstrap.js"></script>
+<script src="https://biejinxin.github.io/js/stop.js"></script>
+<script src="https://biejinxin.github.io/js/contributions.js"></script>
+
+</body>
+
+</html>

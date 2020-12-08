@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>https://biejinxin.github.io/post/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 07 Dec 2020 08:31:20 +0000</lastBuildDate><atom:link href="https://biejinxin.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PracticeC&#43;&#43;_02</title>
+      <link>https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;_02/</link>
+      <pubDate>Mon, 07 Dec 2020 08:31:20 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;_02/</guid>
+      <description>C++核心编程  本阶段主要针对C++面向对象编程技术做详细讲解，探讨C++中的核心和精髓
+1 内存分区模型  C++程序在执行时，将内存大方向划分为4个区域
+ 代码区：存放函数体的二进制代码，由操作系统进行管理 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放，存放函数的参数值，局部变量等 堆区：由程序员分配和释放，若程序员不释放，程序结束时由操作系统回收  内存四区的意义：
+不同区域存放的数据，赋予不同的生命周期，给我们更大的灵活编辑
+1.1 程序运行前 在程序编译后，生成了exe可执行程序，未执行该程序分为两个区域
+代码区：
+​	存放CPU执行的机器指令
+​	代码区是共享的，共享的目的是对于频繁被执行的程序，在需要在内存中有一份代码即可
+​	代码区是只读的，使其只读的原因是防止程序意外的修改了它的指令
+全局区：
+​	全局变量和静态变量存放在此
+​	全局区还包含了常量区，字符串常量和其他常量也存放于此
+​	该区域的数据在程序结束后由操作系统释放
+总结：
+ C++中在程序运行前分为全局区和代码区 代码区特点是共享和只读 全局区中存放的全局变量、静态变量（static 修饰）、常量 常量区中存放const 修饰的全局常量和字符串  1.2 程序运行后  栈区：  ​	由编译器自动分配释放，存放函数的参数值，局部变量
+​	注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放
+  示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; //返回地址的函数 * int * func() { int a = 10;	//局部变量存放在栈区，栈区的数据在函数执行后自动释放	 return &amp;amp;a;	//返回变量的地址  } int main() { //栈区数据的注意事项 ----不要返回局部变量的地址  //栈区的数据由编译器管理开辟和释放  //创建指针变量接受 func() 函数的返回值  int * p = func(); cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第一次可以打印正确数字，是因为编译器做了保留  cout &amp;lt;&amp;lt; *p &amp;lt;&amp;lt; endl;	//第二次这个数据就不在保留  system(&amp;#34;pause&amp;#34;); return 0; }   堆区：</description>
+    </item>
+    
+    <item>
+      <title>PracticeC&#43;&#43;01</title>
+      <link>https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;01/</link>
+      <pubDate>Mon, 07 Dec 2020 08:17:32 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/c&#43;&#43;/practicec&#43;&#43;01/</guid>
+      <description>1 数据类型  1.1 C++函数的通用模板   示例：
+#include&amp;lt;iostream&amp;gt;using namespace std; int main() { system(&amp;#34;pause&amp;#34;); return 0; }   1.2 数据的输入   作用：实现数据的输入
+  语法 ：cin &amp;gt;&amp;gt; 变量名;
+  示例：
+//作用：用于从键盘获取数据  //cin &amp;gt;&amp;gt; 变量  //1.整型的输入  int num = 0; cout &amp;lt;&amp;lt; &amp;#34;请给整型变量赋值：&amp;#34; &amp;lt;&amp;lt; endl; cin &amp;gt;&amp;gt; num; cout &amp;lt;&amp;lt; &amp;#34;整型变量num =&amp;#34; &amp;lt;&amp;lt; num &amp;lt;&amp;lt; endl; //2.浮点型的输入  float f = 0; //3.字符型变量输入  char ch = &amp;#39;a&amp;#39;; //4.</description>
+    </item>
+    
+    <item>
+      <title>Win10_CloneZilla</title>
+      <link>https://biejinxin.github.io/post/fae/win10_clonezilla/</link>
+      <pubDate>Mon, 07 Dec 2020 03:52:04 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/fae/win10_clonezilla/</guid>
+      <description>uefi下备份还原操作步骤如下： 1. WINPE，用分区工具，转换硬盘为UEFI（GUID）格式 2. 统分区和FAT32分区。图示分了2个区，系统NTFS的 C分区和FAT32的D分区。 3. UEFI模式安装系统 4. clonezilla解压缩到FAT32分区的根目录下。 链接：https://pan.baidu.com/s/1JGikeEt9T6sJt79Sf_A1Hw 提取码：ojt8
+5. 硬盘的具体分区情况，修改盘符参数（备份：EFI\boot\backup.cfg；还原：EFI\boot\restore.cfg）。具体可参考下图：  ackup：ocs_prerun=&amp;ldquo;mount /dev/sda4 /home/partimag&amp;rdquo; ocs_live_run=&amp;ldquo;ocs-sr -q2 -j2 -nogui -batch -rm-win-swap-hib -z1p -i 4096 -sfsck -senc -p reboot saveparts SYSIMG sda3&amp;rdquo;
+restore：ocs_prerun=&amp;ldquo;mount /dev/sda4 /home/partimag&amp;rdquo; ocs_live_run=&amp;ldquo;ocs-sr -e1 auto -e2 -nogui -batch -t -r -j2 -k -p reboot -f sda3 restoreparts SYSIMG sda3&amp;rdquo;
+序号同安装时看到的分区序号
+譬如实例，是sda3为待备份的系统分区，sda4是存放备份文件的分区。
+ 6. 以上步骤完成后，可在开机POST LOGO处下按CTRL+F3实现备份/ CTRL+F4还原功能。 </description>
+    </item>
+    
+    <item>
+      <title>CloneZilla</title>
+      <link>https://biejinxin.github.io/post/fae/clonezilla/</link>
+      <pubDate>Mon, 07 Dec 2020 03:51:31 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/fae/clonezilla/</guid>
+      <description>再生龙备份还原 1. 打开iso文件  选择文件-&amp;gt;打开文件-&amp;gt;选择再生龙iso文件
+ 2. 软碟通制作U启动盘  打开软碟通选择写入硬盘映像，依次选择U盘，写入方式后写入
+ 3. 开机选项进入选择UEFI U盘选项进入再生龙 </description>
+    </item>
+    
+    <item>
+      <title>Kali_AptConfig</title>
+      <link>https://biejinxin.github.io/post/kali/kali_aptconfig/</link>
+      <pubDate>Mon, 07 Dec 2020 03:51:09 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/kali/kali_aptconfig/</guid>
+      <description>Kali Linux更换源 ​	cd /etc/apt/
+  进入配置文件目录
+ ​	vim sources.list
+  编辑软件源目录
+ #中科大
+deb http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
+​
+#阿里云
+deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+​
+#清华大学
+deb http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+deb-src http://mirrors.tuna.tsinghua.edu.cn/kali kali-rolling main contrib non-free
+​
+ ​	apt-get update
+  更新源
+ ​	apt-get upgrade
+  强制更新软件</description>
+    </item>
+    
+    <item>
+      <title>UEFI_BIOS_REFLASH</title>
+      <link>https://biejinxin.github.io/post/fae/uefi_bios_reflash/</link>
+      <pubDate>Mon, 07 Dec 2020 03:50:32 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/fae/uefi_bios_reflash/</guid>
+      <description>UEFI下刷写BIOS   将efi文件放入U盘，efi文件内容如下
+  插入U盘，重启主机。根据提示按F11或Delete进入UEFI模式，选择相应的盘符，一般为fs0:
+  **假设BIOS文件为BTD0M003_R，在UEFI下输入cd BTD0M003_R，然后运行flash.nsh执行刷写命令，也可以直接使用工具刷写,fpt64.efi -f BTD0M003-D.bin -bios。刷写完成后断电5s左右重新上电开机。**e`
+ ​
+ </description>
+    </item>
+    
+    <item>
+      <title>Make_DOS</title>
+      <link>https://biejinxin.github.io/post/fae/make_dos/</link>
+      <pubDate>Mon, 07 Dec 2020 03:50:08 +0000</pubDate>
+      
+      <guid>https://biejinxin.github.io/post/fae/make_dos/</guid>
+      <description>1.解压得到“HP优盘启动盘格式化工具.EXE” 2、插上U盘（TF、SD卡） 3、以管理员权限打开“HP优盘启动盘格式化工具.EXE” 4、选择你要制作启动盘的U盘（TF、SD卡） 5、勾选快速格式化 6、勾选“创建DOS启动盘” 8、选择外部DOS BOOT文件夹 9、点“开始” 10、过程中，如果出现有“确定”点“确定”即可 </description>
+    </item>
+    
+  </channel>
+</rss>
